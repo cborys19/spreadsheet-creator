@@ -1,0 +1,32 @@
+from typing import Final
+
+# Genres
+BLUES: Final[str] = "Blues"
+CLASSICAL: Final[str] = "Classical"
+COUNTRY: Final[str] = "Country"
+ELECTRONIC: Final[str] = "Electronic"
+EXPERIMENTAL: Final[str] = "Experimental"
+FOLK: Final[str] = "Folk"
+HIP_HOP: Final[str] = "Hip-Hop"
+INDUSTRIAL: Final[str] = "Industrial"
+JAZZ: Final[str] = "Jazz"
+METAL: Final[str] = "Metal"
+POP: Final[str] = "Pop"
+PUNK: Final[str] = "Punk"
+R_AND_B: Final[str] = "R&B"
+REGGAE: Final[str] = "Reggae"
+REGIONAL: Final[str] = "Regional"
+ROCK: Final[str] = "Rock"
+SOUL: Final[str] = "Soul"
+
+# Formats
+ALBUM: Final[str] = "Album"
+EP: Final[str] = "EP"
+SPLIT: Final[str] = "Split"
+MIXTAPE: Final[str] = "Mixtape"
+COMPILATION: Final[str] = "Compilation"
+COLLAB: Final[str] = "Collab"
+LIVE: Final[str] = "Live"
+ARCHIVAL: Final[str] = "Archival"
+DEMO: Final[str] = "Demo"
+ADDITIONAL_RELEASE: Final[str] = "Additional Release"
