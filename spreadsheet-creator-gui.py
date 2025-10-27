@@ -946,6 +946,16 @@ class CreateSheet(tkinter.Frame):
             self.genre_families.remove(genre)
 
     def validate_runtime(self):
+        """
+        Validates the release's runtime entered by the user. The runtime
+        must be in either HH:MM:SS or MM:SS format.
+
+        Parameters: none
+
+        Called by: CreateSheet.__init__
+
+        Returns: WILL EVENTUALLY RETURN FALSE
+        """
         runtime_str = self.runtime.get()
         runtime_vals = []
 
