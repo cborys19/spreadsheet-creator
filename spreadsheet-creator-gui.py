@@ -138,6 +138,20 @@ class CreateSheet(tkinter.Frame):
     def __init__(self, parent, controller):
         ttk.Frame.__init__(self, parent)
 
+        # All fields that will be written to sheet
+        self.artist = tkinter.StringVar()
+        self.title = tkinter.StringVar()
+        self.year = tkinter.IntVar()
+        self.genre_families = [] # For tracking the genre(s) to be written to sheet
+        self.subgenres = []
+        self.month_listened = ""
+        self.day = ""
+        self.date_listened = ""
+        self.runtime = tkinter.StringVar()
+        self.formats = [] # For tracking the format(s) that will be written to sheet
+        self.personal_rating = ""
+        self.url = tkinter.StringVar()
+
         # Loads in genre JSON data
         with open('genres.json', encoding='utf8') as file:
             self.json_data = json.load(file)
@@ -146,18 +160,22 @@ class CreateSheet(tkinter.Frame):
         ttk.Label(self, text="Create Sheet", font=LARGEFONT).grid(row=0, column=4, padx=10, pady=10)
 
         # Release artist label and entry
+        self.artist = tkinter.StringVar()
         ttk.Label(self, text="Enter name of release artist: ").grid(row=1, column=1)
-        self.artist_entry = ttk.Entry(self).grid(row=1, column=2)
+        ttk.Entry(self, textvariable=self.artist).grid(row=1, column=2)
 
         # Release title label and entry
         ttk.Label(self, text="Enter title of release: ").grid(row=2, column=1)
-        self.title_entry = ttk.Entry(self).grid(row=2, column=2)
+        ttk.Entry(self, text=self.artist).grid(row=2, column=2)
+
+        print(self.artist)
 
         self.year_entry_var = tkinter.StringVar() # Initialize string variable for release year
         self.year_message = tkinter.StringVar() # Initialize string variable for year message
+
         # Release year label and entry
         ttk.Label(self, text="Enter year of release: ").grid(row=3, column=1)
-        self.year_entry = ttk.Entry(
+        ttk.Entry(
             self,
             textvariable=self.year_entry_var, 
             validate="focusout", 
@@ -217,7 +235,6 @@ class CreateSheet(tkinter.Frame):
         ) = (tkinter.BooleanVar() for _ in range(17))
 
         self.added_trees = set() # For tracking the currently checked genres
-        self.genre_families = list() # For tracking the genre(s) to be written to sheet
 
         # Genre Family Checkbuttons
         ttk.Label(self, text="Genre Families").grid(row=4, column=1)
@@ -412,6 +429,14 @@ class CreateSheet(tkinter.Frame):
             column=5
         )
 
+        ttk.Label(self, text="Enter the release's runtime (MM:SS or HH:MM:SS)")
+        ttk.Entry(
+            self, 
+            textvariable=self.runtime, 
+            validate="focusout", 
+            validatecommand=self.validate_runtime
+        )
+
         # <format>_checked Variables
         (
             self.album_checked,
@@ -427,7 +452,6 @@ class CreateSheet(tkinter.Frame):
         ) = (tkinter.BooleanVar() for _ in range(10))
 
         self.added_formats = set() # For tracking currently checked formats
-        self.formats = list() # For tracking the format(s) that will be written to sheet
 
         # Release Format Checkbuttons
         ttk.Label(self, text="Format(s) [check all that apply]").grid(row=8, column=1)
@@ -553,13 +577,43 @@ class CreateSheet(tkinter.Frame):
             row=9, 
             column=2
         )
-
+        
         self.url_message = tkinter.StringVar()
         self.url_invalid_message = tkinter.Message(
             self,
             textvariable=self.url_message,
             fg="red"
         )
+
+    def validate_year(self):
+        """
+        Validate the given year as an integer.
+
+        Parameters: none
+
+        Called from: CreateSheet.__init__
+
+        Returns:
+            Boolean: True - So that failures thrown in except don't permanently
+                        stop validation.
+        """
+        year = self.year_entry_var.get().strip()
+
+        if year == "":
+            self.year_message.set("")
+            return True
+
+        try:
+            year = int(year)
+            self.year = year
+            self.year_message.set("")
+            if self.year_invalid_message.winfo_ismapped():
+                self.year_invalid_message.grid_remove()
+        except:
+            self.year_message.set("ERROR: Please enter a valid integer for the year")
+            self.year_invalid_message.grid(row=3, column=3)
+        finally:
+            return True
 
     def genre_handler(self):
         """
@@ -891,6 +945,36 @@ class CreateSheet(tkinter.Frame):
         if self.genre_families.count(genre) > 0:
             self.genre_families.remove(genre)
 
+    def validate_runtime(self):
+        runtime_str = self.runtime.get()
+        runtime_vals = []
+
+        if runtime_str == "":
+            # TODO - Will need to set error message(s) to be blank here
+            return True
+
+        if runtime_str.count(':') <= 0 or runtime_str.count(':') > 2:
+            # TODO - Show error message telling runtime needs proper format
+            # Means that format is not even MM:SS
+            return False # TODO - Get rid of this; only here to avoid error
+        
+        runtime_vals = runtime_str.split(':')
+
+        for i in runtime_vals:
+            if runtime_vals[i].isdigit():
+                runtime_vals[i] = int(runtime_vals[i])
+            else:
+                # TODO - Show error message telling to enter only valid digits in runtime
+                return False # TODO - Get rid of this; only here to avoid error
+
+        combined_runtime = ""
+        if len(runtime_vals) == 2:
+            combined_runtime = round((runtime_vals[0] + (runtime_vals[1] / 60)), 2)
+        elif len(runtime_vals) == 3:
+            combined_runtime = round((((runtime_vals[0] * 60) + runtime_vals[1]) + (runtime_vals[2] / 60)), 2)
+
+        self.runtime = str(combined_runtime)
+
     def format_handler(self):
         """
         Handles tracking and untracking formats to be written to sheet.
@@ -1034,35 +1118,6 @@ class CreateSheet(tkinter.Frame):
         if self.formats.count(format) > 0:
             self.formats.remove(format)
 
-    def validate_year(self):
-        """
-        Validate the given year as an integer.
-
-        Parameters: none
-
-        Called from: CreateSheet.__init__
-
-        Returns:
-            Boolean: True - So that failures thrown in except don't permanently
-                        stop validation.
-        """
-        year = self.year_entry_var.get().strip()
-
-        if year == "":
-            self.year_message.set("")
-            return True
-
-        try:
-            year = int(year)
-            self.year_message.set("")
-            if self.year_invalid_message.winfo_ismapped():
-                self.year_invalid_message.grid_remove()
-        except:
-            self.year_message.set("ERROR: Please enter a valid integer for the year")
-            self.year_invalid_message.grid(row=3, column=3)
-        finally:
-            return True
-
     def is_link_valid(self):
         """
         Validate the given Rate Your Music release URL against release_link_regex.
@@ -1082,6 +1137,7 @@ class CreateSheet(tkinter.Frame):
             return True
         
         if release_link_regex.match(link):
+            self.url = link
             self.url_message.set("")
             if self.url_invalid_message.winfo_ismapped():
                 self.url_invalid_message.grid_remove()
