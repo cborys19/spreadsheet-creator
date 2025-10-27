@@ -911,60 +911,96 @@ class CreateSheet(tkinter.Frame):
             if c.ALBUM in self.added_formats:
                 self.format_remove(c.ALBUM)
                 self.added_formats.remove(c.ALBUM)
-        # TODO - Add logic seen in Album to other formats
+            
         # EP
         if self.ep_checked.get():
-            self.format_add(c.EP)
+            if c.EP not in self.added_formats:
+                self.format_add(c.EP)
+                self.added_formats.add(c.EP)
         else:
-            self.format_remove(c.EP)
+            if c.EP in self.added_formats:
+                self.format_remove(c.EP)
+                self.added_formats.remove(c.EP)
 
         # Split
         if self.split_checked.get():
-            self.format_add(c.SPLIT)
+            if c.SPLIT not in self.added_formats:
+                self.format_add(c.SPLIT)
+                self.added_formats.add(c.SPLIT)
         else:
-            self.format_remove(c.SPLIT)
+            if c.SPLIT in self.added_formats:
+                self.format_remove(c.SPLIT)
+                self.added_formats.remove(c.SPLIT)
 
         # Mixtape
         if self.mixtape_checked.get():
-            self.format_add(c.MIXTAPE)
+            if c.MIXTAPE not in self.added_formats:
+                self.format_add(c.MIXTAPE)
+                self.added_formats.add(c.MIXTAPE)
         else:
-            self.format_remove(c.MIXTAPE)
+            if c.MIXTAPE in self.added_formats:
+                self.format_remove(c.MIXTAPE)
+                self.added_formats.remove(c.MIXTAPE)
 
         # Compilation
         if self.compilation_checked.get():
-            self.format_add(c.COMPILATION)
+            if c.COMPILATION not in self.added_formats:
+                self.format_add(c.COMPILATION)
+                self.added_formats.add(c.COMPILATION)
         else:
-            self.format_remove(c.COMPILATION)
+            if c.COMPILATION in self.added_formats:
+                self.format_remove(c.COMPILATION)
+                self.added_formats.remove(c.COMPILATION)
         
         # Collab
         if self.collab_checked.get():
-            self.format_add(c.COLLAB)
+            if c.COLLAB not in self.added_formats:
+                self.format_add(c.COLLAB)
+                self.added_formats.add(c.COLLAB)
         else:
-            self.format_remove(c.COLLAB)
+            if c.COLLAB in self.added_formats:
+                self.format_remove(c.COLLAB)
+                self.added_formats.remove(c.COLLAB)
         
         # Live
         if self.live_checked.get():
-            self.format_add(c.LIVE)
+            if c.LIVE not in self.added_formats:
+                self.format_add(c.LIVE)
+                self.added_formats.add(c.LIVE)
         else:
-            self.format_remove(c.LIVE)
+            if c.LIVE in self.added_formats:
+                self.format_remove(c.LIVE)
+                self.added_formats.remove(c.LIVE)
         
         # Archival
         if self.archival_checked.get():
-            self.format_add(c.ARCHIVAL)
+            if c.ARCHIVAL not in self.added_formats:
+                self.format_add(c.ARCHIVAL)
+                self.added_formats.add(c.ARCHIVAL)
         else:
-            self.format_remove(c.ARCHIVAL)
+            if c.ARCHIVAL in self.added_formats:
+                self.format_remove(c.ARCHIVAL)
+                self.added_formats.remove(c.ARCHIVAL)
         
         # Demo
         if self.demo_checked.get():
-            self.format_add(c.DEMO)
+            if c.DEMO not in self.added_formats:
+                self.format_add(c.DEMO)
+                self.added_formats.add(c.DEMO)
         else:
-            self.format_remove(c.DEMO)
+            if c.DEMO in self.added_formats:
+                self.format_remove(c.DEMO)
+                self.added_formats.remove(c.DEMO)
 
         # Additional Release
         if self.additional_release_checked.get():
-            self.format_add(c.ADDITIONAL_RELEASE)
+            if c.ADDITIONAL_RELEASE not in self.added_formats:
+                self.format_add(c.ADDITIONAL_RELEASE)
+                self.added_formats.add(c.ADDITIONAL_RELEASE)
         else:
-            self.format_remove(c.ADDITIONAL_RELEASE)
+            if c.ADDITIONAL_RELEASE in self.added_formats:
+                self.format_remove(c.ADDITIONAL_RELEASE)
+                self.added_formats.remove(c.ADDITIONAL_RELEASE)
 
     def format_add(self, format):
         """
