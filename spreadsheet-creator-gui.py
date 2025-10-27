@@ -109,14 +109,14 @@ class CreateSheetPrompt(tkinter.Frame):
     def validateInput(self):
         link_value = self.list_link_entry.get()
         classical_sheet_choice = self.classical_prompt_choice.get()
-        if self.isLinkValid(link_value) and classical_sheet_choice == 1:
+        if self.is_link_valid(link_value) and classical_sheet_choice == 1:
             messagebox.showinfo(
                 "Rate Your Music List Validated!",
                 "Your Rate Your Music list link is VALID!"
             )
-        elif self.isLinkValid(link_value) and classical_sheet_choice == 2:
+        elif self.is_link_valid(link_value) and classical_sheet_choice == 2:
             self.controller.show_frame(CreateSheet)
-        elif self.isLinkValid(link_value) and classical_sheet_choice not in range(1, 3):
+        elif self.is_link_valid(link_value) and classical_sheet_choice not in range(1, 3):
             messagebox.showerror(
                 "ERROR", 
                 "Please choose whether or not this is a classical list"
@@ -127,7 +127,7 @@ class CreateSheetPrompt(tkinter.Frame):
                 "Your Rate Your Music list link is INVALID!"
             )
     
-    def isLinkValid(self, link):
+    def is_link_valid(self, link):
         if list_link_regex.match(link):
             return True
         else:
@@ -161,7 +161,7 @@ class CreateSheet(tkinter.Frame):
             self,
             textvariable=self.year_entry_var, 
             validate="focusout", 
-            validatecommand=self.validateYear
+            validatecommand=self.validate_year
         ).grid(
             row=3, 
             column=2
@@ -227,7 +227,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.blues_checked, 
             offvalue=False, 
             onvalue=True, 
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=4,
             column=2
@@ -238,7 +238,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.classical_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=4,
             column=3
@@ -249,7 +249,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.country_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=4,
             column=4
@@ -260,7 +260,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.electronic_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=4,
             column=5
@@ -271,7 +271,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.experimental_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=4,
             column=6
@@ -283,7 +283,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.folk_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=5,
             column=2
@@ -294,7 +294,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.hip_hop_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=5,
             column=3
@@ -305,7 +305,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.industrial_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=5,
             column=4
@@ -316,7 +316,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.jazz_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=5,
             column=5
@@ -327,7 +327,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.metal_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=5,
             column=6
@@ -339,7 +339,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.pop_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=6,
             column=2
@@ -350,7 +350,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.punk_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=6,
             column=3
@@ -361,7 +361,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.r_and_b_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=6,
             column=4
@@ -372,7 +372,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.reggae_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=6,
             column=5
@@ -383,19 +383,19 @@ class CreateSheet(tkinter.Frame):
             variable=self.regional_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=6,
             column=6
         )
-        
+
         ttk.Checkbutton(
             self,
             text=c.ROCK,
             variable=self.rock_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=7,
             column=3
@@ -406,7 +406,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.soul_checked,
             offvalue=False,
             onvalue=True,
-            command=self.genreHandler
+            command=self.genre_handler
         ).grid(
             row=7,
             column=5
@@ -437,7 +437,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.album_checked, 
             offvalue=False, 
             onvalue=True,
-            command=self.formatHandler
+            command=self.format_handler
         ).grid(
             row=8,
             column=2
@@ -448,7 +448,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.ep_checked, 
             offvalue=False, 
             onvalue=True,
-            command=self.formatHandler
+            command=self.format_handler
         ).grid(
             row=8,
             column=3
@@ -459,7 +459,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.split_checked, 
             offvalue=False, 
             onvalue=True,
-            command=self.formatHandler
+            command=self.format_handler
         ).grid(
             row=8,
             column=4
@@ -470,7 +470,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.mixtape_checked, 
             offvalue=False, 
             onvalue=True,
-            command=self.formatHandler
+            command=self.format_handler
         ).grid(
             row=8,
             column=5
@@ -481,7 +481,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.compilation_checked, 
             offvalue=False, 
             onvalue=True,
-            command=self.formatHandler
+            command=self.format_handler
         ).grid(
             row=8,
             column=6
@@ -492,7 +492,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.collab_checked, 
             offvalue=False, 
             onvalue=True,
-            command=self.formatHandler
+            command=self.format_handler
         ).grid(
             row=8,
             column=7
@@ -503,7 +503,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.live_checked, 
             offvalue=False, 
             onvalue=True,
-            command=self.formatHandler
+            command=self.format_handler
         ).grid(
             row=8,
             column=8
@@ -514,7 +514,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.archival_checked, 
             offvalue=False, 
             onvalue=True,
-            command=self.formatHandler
+            command=self.format_handler
         ).grid(
             row=8,
             column=9
@@ -525,7 +525,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.demo_checked, 
             offvalue=False, 
             onvalue=True,
-            command=self.formatHandler
+            command=self.format_handler
         ).grid(
             row=8,
             column=10
@@ -536,7 +536,7 @@ class CreateSheet(tkinter.Frame):
             variable=self.additional_release_checked, 
             offvalue=False, 
             onvalue=True,
-            command=self.formatHandler
+            command=self.format_handler
         ).grid(
             row=8,
             column=11
@@ -548,7 +548,7 @@ class CreateSheet(tkinter.Frame):
             self, 
             textvariable=self.url_entry_var, 
             validate="focusout", 
-            validatecommand=self.isLinkValid
+            validatecommand=self.is_link_valid
         ).grid(
             row=9, 
             column=2
@@ -561,313 +561,283 @@ class CreateSheet(tkinter.Frame):
             fg="red"
         )
 
-    # Function to:
-    #   - Create genre treeviews
-    #   - Populate them with subgenres
-    #   - Add genres to genre_families
-    def genreHandler(self): 
+    def genre_handler(self):
+        """
+        Handle creating genre treeviews and tracking selected genres.
+
+        Parameters: none
+
+        Called by: CreateSheet.__init__
+
+        Returns: none
+        """
+
         # Blues
         if self.blues_checked.get():
             if c.BLUES not in self.added_trees:
-                self.genreTreeviewAdd(self.blues_tree, c.BLUES, 10, 2)
+                self.genre_treeview_add(self.blues_tree, c.BLUES, 10, 2)
                 self.added_trees.add(c.BLUES)
-                self.genreFamilyAdd(c.BLUES)
+                self.genre_family_add(c.BLUES)
         else:
             if c.BLUES in self.added_trees:
-                self.genreTreeviewRemove(self.blues_tree)
+                self.genre_treeview_remove(self.blues_tree)
                 self.added_trees.remove(c.BLUES)
-                self.genreFamilyRemove(c.BLUES)
+                self.genre_family_remove(c.BLUES)
         
         # Classical
         if self.classical_checked.get():
             if c.CLASSICAL not in self.added_trees:
-                self.genreTreeviewAdd(self.classical_tree, c.CLASSICAL, 10, 3)
+                self.genre_treeview_add(self.classical_tree, c.CLASSICAL, 10, 3)
                 self.added_trees.add(c.CLASSICAL)
-                self.genreFamilyAdd(c.CLASSICAL)
+                self.genre_family_add(c.CLASSICAL)
         else:
             if c.CLASSICAL in self.added_trees:
-                self.genreTreeviewRemove(self.classical_tree)
+                self.genre_treeview_remove(self.classical_tree)
                 self.added_trees.remove(c.CLASSICAL)
-                self.genreFamilyRemove(c.CLASSICAL)
+                self.genre_family_remove(c.CLASSICAL)
 
         # Country
         if self.country_checked.get():
             if c.COUNTRY not in self.added_trees:
-                self.genreTreeviewAdd(self.country_tree, c.COUNTRY, 10, 4)
+                self.genre_treeview_add(self.country_tree, c.COUNTRY, 10, 4)
                 self.added_trees.add(c.COUNTRY)
-                self.genreFamilyAdd(c.COUNTRY)
+                self.genre_family_add(c.COUNTRY)
         else:
             if c.COUNTRY in self.added_trees:
-                self.genreTreeviewRemove(self.country_tree)
+                self.genre_treeview_remove(self.country_tree)
                 self.added_trees.remove(c.COUNTRY)
-                self.genreFamilyRemove(c.COUNTRY)
+                self.genre_family_remove(c.COUNTRY)
 
         # Electronic
         if self.electronic_checked.get():
             if c.ELECTRONIC not in self.added_trees:
-                self.genreTreeviewAdd(self.electronic_tree, c.ELECTRONIC, 10, 5)
+                self.genre_treeview_add(self.electronic_tree, c.ELECTRONIC, 10, 5)
                 self.added_trees.add(c.ELECTRONIC)
-                self.genreFamilyAdd(c.ELECTRONIC)
+                self.genre_family_add(c.ELECTRONIC)
         else:
             if c.ELECTRONIC in self.added_trees:
-                self.genreTreeviewRemove(self.electronic_tree)
+                self.genre_treeview_remove(self.electronic_tree)
                 self.added_trees.remove(c.ELECTRONIC)
-                self.genreFamilyRemove(c.ELECTRONIC)
+                self.genre_family_remove(c.ELECTRONIC)
         
         # Experimental
         if self.experimental_checked.get():
             if c.EXPERIMENTAL not in self.added_trees:
-                self.genreTreeviewAdd(self.experimental_tree, c.EXPERIMENTAL, 10, 6)
+                self.genre_treeview_add(self.experimental_tree, c.EXPERIMENTAL, 10, 6)
                 self.added_trees.add(c.EXPERIMENTAL)
-                self.genreFamilyAdd(c.EXPERIMENTAL)
+                self.genre_family_add(c.EXPERIMENTAL)
         else:
             if c.EXPERIMENTAL in self.added_trees:
-                self.genreTreeviewRemove(self.experimental_tree)
+                self.genre_treeview_remove(self.experimental_tree)
                 self.added_trees.remove(c.EXPERIMENTAL)
-                self.genreFamilyRemove(c.EXPERIMENTAL)
+                self.genre_family_remove(c.EXPERIMENTAL)
 
         # Folk
         if self.folk_checked.get():
             if c.FOLK not in self.added_trees:
-                self.genreTreeviewAdd(self.folk_tree, c.FOLK, 11, 2)
+                self.genre_treeview_add(self.folk_tree, c.FOLK, 11, 2)
                 self.added_trees.add(c.FOLK)
-                self.genreFamilyAdd(c.FOLK)
+                self.genre_family_add(c.FOLK)
         else:
             if c.FOLK in self.added_trees:
-                self.genreTreeviewRemove(self.folk_tree)
+                self.genre_treeview_remove(self.folk_tree)
                 self.added_trees.remove(c.FOLK)
-                self.genreFamilyRemove(c.FOLK)
+                self.genre_family_remove(c.FOLK)
         
         # Hip-Hop
         if self.hip_hop_checked.get():
             if c.HIP_HOP not in self.added_trees:
-                self.genreTreeviewAdd(self.hip_hop_tree, c.HIP_HOP, 11, 3)
+                self.genre_treeview_add(self.hip_hop_tree, c.HIP_HOP, 11, 3)
                 self.added_trees.add(c.HIP_HOP)
-                self.genreFamilyAdd(c.HIP_HOP)
+                self.genre_family_add(c.HIP_HOP)
         else:
             if c.HIP_HOP in self.added_trees:
-                self.genreTreeviewRemove(self.hip_hop_tree)
+                self.genre_treeview_remove(self.hip_hop_tree)
                 self.added_trees.remove(c.HIP_HOP)
-                self.genreFamilyRemove(c.HIP_HOP)
+                self.genre_family_remove(c.HIP_HOP)
         
         # Industrial
         if self.industrial_checked.get():
             if c.INDUSTRIAL not in self.added_trees:
-                self.genreTreeviewAdd(self.industrial_tree, c.INDUSTRIAL, 11, 4)
+                self.genre_treeview_add(self.industrial_tree, c.INDUSTRIAL, 11, 4)
                 self.added_trees.add(c.INDUSTRIAL)
-                self.genreFamilyAdd(c.INDUSTRIAL)
+                self.genre_family_add(c.INDUSTRIAL)
         else:
             if c.INDUSTRIAL in self.added_trees:
-                self.genreTreeviewRemove(self.industrial_tree)
+                self.genre_treeview_remove(self.industrial_tree)
                 self.added_trees.remove(c.INDUSTRIAL)
-                self.genreFamilyRemove(c.INDUSTRIAL)
+                self.genre_family_remove(c.INDUSTRIAL)
         
         # Jazz
         if self.jazz_checked.get():
             if c.JAZZ not in self.added_trees:
-                self.genreTreeviewAdd(self.jazz_tree, c.JAZZ, 11, 5)
+                self.genre_treeview_add(self.jazz_tree, c.JAZZ, 11, 5)
                 self.added_trees.add(c.JAZZ)
-                self.genreFamilyAdd(c.JAZZ)
+                self.genre_family_add(c.JAZZ)
         else:
             if c.JAZZ in self.added_trees:
-                self.genreTreeviewRemove(self.jazz_tree)
+                self.genre_treeview_remove(self.jazz_tree)
                 self.added_trees.remove(c.JAZZ)
-                self.genreFamilyRemove(c.JAZZ)
+                self.genre_family_remove(c.JAZZ)
 
         # Metal
         if self.metal_checked.get():
             if c.METAL not in self.added_trees:
-                self.genreTreeviewAdd(self.metal_tree, c.METAL, 11, 6)
+                self.genre_treeview_add(self.metal_tree, c.METAL, 11, 6)
                 self.added_trees.add(c.METAL)
-                self.genreFamilyAdd(c.METAL)
+                self.genre_family_add(c.METAL)
         else:
             if c.METAL in self.added_trees:
-                self.genreTreeviewRemove(self.metal_tree)
+                self.genre_treeview_remove(self.metal_tree)
                 self.added_trees.remove(c.METAL)
-                self.genreFamilyRemove(c.METAL)
+                self.genre_family_remove(c.METAL)
         
         # Pop
         if self.pop_checked.get():
             if c.POP not in self.added_trees:
-                self.genreTreeviewAdd(self.pop_tree, c.POP, 12, 2)
+                self.genre_treeview_add(self.pop_tree, c.POP, 12, 2)
                 self.added_trees.add(c.POP)
-                self.genreFamilyAdd(c.POP)
+                self.genre_family_add(c.POP)
         else:
             if c.POP in self.added_trees:
-                self.genreTreeviewRemove(self.pop_tree)
+                self.genre_treeview_remove(self.pop_tree)
                 self.added_trees.remove(c.POP)
-                self.genreFamilyRemove(c.POP)
+                self.genre_family_remove(c.POP)
 
         # Punk
         if self.punk_checked.get():
             if c.PUNK not in self.added_trees:
-                self.genreTreeviewAdd(self.punk_tree, c.PUNK, 12, 3)
+                self.genre_treeview_add(self.punk_tree, c.PUNK, 12, 3)
                 self.added_trees.add(c.PUNK)
-                self.genreFamilyAdd(c.PUNK)
+                self.genre_family_add(c.PUNK)
         else:
             if c.PUNK in self.added_trees:
-                self.genreTreeviewRemove(self.punk_tree)
+                self.genre_treeview_remove(self.punk_tree)
                 self.added_trees.remove(c.PUNK)
-                self.genreFamilyRemove(c.PUNK)
+                self.genre_family_remove(c.PUNK)
         
         # R&B
         if self.r_and_b_checked.get():
             if c.R_AND_B not in self.added_trees:
-                self.genreTreeviewAdd(self.r_and_b_tree, c.R_AND_B, 12, 4)
+                self.genre_treeview_add(self.r_and_b_tree, c.R_AND_B, 12, 4)
                 self.added_trees.add(c.R_AND_B)
-                self.genreFamilyAdd(c.R_AND_B)
+                self.genre_family_add(c.R_AND_B)
         else:
             if c.R_AND_B in self.added_trees:
-                self.genreTreeviewRemove(self.r_and_b_tree)
+                self.genre_treeview_remove(self.r_and_b_tree)
                 self.added_trees.remove(c.R_AND_B)
-                self.genreFamilyRemove(c.R_AND_B)
+                self.genre_family_remove(c.R_AND_B)
         
         # Reggae
         if self.reggae_checked.get():
             if c.REGGAE not in self.added_trees:
-                self.genreTreeviewAdd(self.reggae_tree, c.REGGAE, 12, 5)
+                self.genre_treeview_add(self.reggae_tree, c.REGGAE, 12, 5)
                 self.added_trees.add(c.REGGAE)
-                self.genreFamilyAdd(c.REGGAE)
+                self.genre_family_add(c.REGGAE)
         else:
             if c.REGGAE in self.added_trees:
-                self.genreTreeviewRemove(self.reggae_tree)
+                self.genre_treeview_remove(self.reggae_tree)
                 self.added_trees.remove(c.REGGAE)
-                self.genreFamilyRemove(c.REGGAE)
+                self.genre_family_remove(c.REGGAE)
         
         # Regional
         if self.regional_checked.get():
             if c.REGIONAL not in self.added_trees:
-                self.genreTreeviewAdd(self.regional_tree, c.REGIONAL, 12, 6)
+                self.genre_treeview_add(self.regional_tree, c.REGIONAL, 12, 6)
                 self.added_trees.add(c.REGIONAL)
-                self.genreFamilyAdd(c.REGIONAL)
+                self.genre_family_add(c.REGIONAL)
         else:
             if c.REGIONAL in self.added_trees:
-                self.genreTreeviewRemove(self.regional_tree)
+                self.genre_treeview_remove(self.regional_tree)
                 self.added_trees.remove(c.REGIONAL)
-                self.genreFamilyRemove(c.REGIONAL)
+                self.genre_family_remove(c.REGIONAL)
 
         # Rock
         if self.rock_checked.get():
             if c.ROCK not in self.added_trees:
-                self.genreTreeviewAdd(self.rock_tree, c.ROCK, 13, 3)
+                self.genre_treeview_add(self.rock_tree, c.ROCK, 13, 3)
                 self.added_trees.add(c.ROCK)
-                self.genreFamilyAdd(c.ROCK)
+                self.genre_family_add(c.ROCK)
         else:
             if c.ROCK in self.added_trees:
-                self.genreTreeviewRemove(self.rock_tree)
+                self.genre_treeview_remove(self.rock_tree)
                 self.added_trees.remove(c.ROCK)
-                self.genreFamilyRemove(c.ROCK)
+                self.genre_family_remove(c.ROCK)
         
         # Soul
         if self.soul_checked.get():
             if c.SOUL not in self.added_trees:
-                self.genreTreeviewAdd(self.soul_tree, c.SOUL, 13, 5)
+                self.genre_treeview_add(self.soul_tree, c.SOUL, 13, 5)
                 self.added_trees.add(c.SOUL)
-                self.genreFamilyAdd(c.SOUL)
+                self.genre_family_add(c.SOUL)
         else:
             if c.SOUL in self.added_trees:
-                self.genreTreeviewRemove(self.soul_tree)
+                self.genre_treeview_remove(self.soul_tree)
                 self.added_trees.remove(c.SOUL)
-                self.genreFamilyRemove(c.SOUL)
+                self.genre_family_remove(c.SOUL)
 
-    def genreTreeviewAdd(self, tree, genre, row_num, col_num):
+    def genre_treeview_add(self, tree, genre, row_num, col_num):
+        """
+        Creates and displays genre treeviews.
+
+        Parameters:
+            tree (ttk.Treeview): Treeview to display genre and its subgenres.
+            genre (str): Genre to make treeview for.
+            row_num (int): Row the treeview will be displayed on.
+            col_num (int): Column the treeview will be displayed on.
+
+        Called by: CreateSheet.genre_handler
+
+        Returns: none
+        """
+
+        # Create genre treeview with main genre as root
         tree.insert("", tkinter.END, text=genre)
-        self.genreTreeviewGenerator(
+
+        self.genre_treeview_generator(
             tree,
             "",
             self.json_data[genre]
         )
+
         tree.grid(row=row_num, column=col_num)
 
-    def genreTreeviewRemove(self, tree):
+    def genre_treeview_remove(self, tree):
+        """
+        Clear and remove a genre treeview from UI.
+
+        Parameters:
+            tree (ttk.Treeview): Treeview to remove from UI
+
+        Called by: CreateSheet.genre_handler
+
+        Returns: none
+        """
+
+        # Executes if treeview is currently mapped to UI
         if tree.winfo_ismapped():
             tree.delete(*tree.get_children())
             tree.grid_remove()
 
-    def genreFamilyAdd(self, genre):
-        if self.genre_families.count(genre) == 0:
-            self.genre_families.append(genre)
+    def genre_treeview_generator(self, tree, parent, genre_list):
+        """
+        Recursively creates ttk Treeviews from each parent genre and its subgenres.
+
+        Parameters:
+            tree (ttk.Treeview): Treeview to be populated with subgenres.
+            parent (int): ID referring to treeview entry that this subgenre should be placed under.
+            genre_list (JSON data): JSON data containing the genre structure of said genre.
         
-    def genreFamilyRemove(self, genre):
-        if self.genre_families.count(genre) > 0:
-            self.genre_families.remove(genre)
+        Called by: CreateSheet.genre_treeview_add
 
-    def formatHandler(self):
-        # Album
-        if self.album_checked.get():
-            if c.ALBUM not in self.added_formats:
-                self.formatAdd(c.ALBUM)
-                self.added_formats.add(c.ALBUM)
-        else:
-            if c.ALBUM in self.added_formats:
-                self.formatRemove(c.ALBUM)
-                self.added_formats.remove(c.ALBUM)
+        Returns: none    
+        """
 
-        # EP
-        if self.ep_checked.get():
-            self.formatAdd(c.EP)
-        else:
-            self.formatRemove(c.EP)
-
-        # Split
-        if self.split_checked.get():
-            self.formatAdd(c.SPLIT)
-        else:
-            self.formatRemove(c.SPLIT)
-
-        # Mixtape
-        if self.mixtape_checked.get():
-            self.formatAdd(c.MIXTAPE)
-        else:
-            self.formatRemove(c.MIXTAPE)
-
-        # Compilation
-        if self.compilation_checked.get():
-            self.formatAdd(c.COMPILATION)
-        else:
-            self.formatRemove(c.COMPILATION)
-        
-        # Collab
-        if self.collab_checked.get():
-            self.formatAdd(c.COLLAB)
-        else:
-            self.formatRemove(c.COLLAB)
-        
-        # Live
-        if self.live_checked.get():
-            self.formatAdd(c.LIVE)
-        else:
-            self.formatRemove(c.LIVE)
-        
-        # Archival
-        if self.archival_checked.get():
-            self.formatAdd(c.ARCHIVAL)
-        else:
-            self.formatRemove(c.ARCHIVAL)
-        
-        # Demo
-        if self.demo_checked.get():
-            self.formatAdd(c.DEMO)
-        else:
-            self.formatRemove(c.DEMO)
-
-        # Additional Release
-        if self.additional_release_checked.get():
-            self.formatAdd(c.ADDITIONAL_RELEASE)
-        else:
-            self.formatRemove(c.ADDITIONAL_RELEASE)
-
-    def formatAdd(self, format):
-        if self.formats.count(format) == 0:
-            self.formats.append(format)
-    
-    def formatRemove(self, format):
-        if self.formats.count(format) > 0:
-            self.formats.remove(format)
-
-    def genreTreeviewGenerator(self, tree, parent, genre_list):
+        # Loops through each genre key
         for genre in genre_list:
             if "simplified-name" in genre:
+                # Executes if a "simplified-name" exists in JSON pair
+                # Means that there was at least one non-ASCII character in the genre's name
                 id = tree.insert(
                     parent, 
                     tkinter.END, 
@@ -881,16 +851,167 @@ class CreateSheet(tkinter.Frame):
                 )
             
             if "subgenres" in genre and genre["subgenres"]:
-                self.genreTreeviewGenerator(
+                # Executes if the genre has associated subgenres
+                # Calls this function recursively, passing the subgenres as genre_list
+                self.genre_treeview_generator(
                     tree, 
                     id, 
                     genre["subgenres"]
                 )
 
-    def validateYear(self):
+    def genre_family_add(self, genre):
+        """
+        Appends genre to list of genres to be written to sheet.
+
+        Parameters:
+            genre (str): Genre to be written to sheet.
+
+        Called by: CreateSheet.genre_handler
+
+        Returns: none
+        """
+
+        # Tests if genre is not in genre_families
+        if self.genre_families.count(genre) == 0:
+            self.genre_families.append(genre)
+   
+    def genre_family_remove(self, genre):
+        """
+        Removes genre from list of genres to be written to sheet.
+
+        Parameters:
+            genre (str): Genre to be removed from genres to write to sheet.
+        
+        Called by: CreateSheet.genre_handler
+
+        Returns: none
+        """
+
+        # Tests if genre exists in genre_families
+        if self.genre_families.count(genre) > 0:
+            self.genre_families.remove(genre)
+
+    def format_handler(self):
+        """
+        Handles tracking and untracking formats to be written to sheet.
+
+        Parameters: none
+
+        Called by: CreateSheet.__init__
+
+        Returns: none
+        """
+
+        # Album
+        if self.album_checked.get():
+            if c.ALBUM not in self.added_formats:
+                self.format_add(c.ALBUM)
+                self.added_formats.add(c.ALBUM)
+        else:
+            if c.ALBUM in self.added_formats:
+                self.format_remove(c.ALBUM)
+                self.added_formats.remove(c.ALBUM)
+        # TODO - Add logic seen in Album to other formats
+        # EP
+        if self.ep_checked.get():
+            self.format_add(c.EP)
+        else:
+            self.format_remove(c.EP)
+
+        # Split
+        if self.split_checked.get():
+            self.format_add(c.SPLIT)
+        else:
+            self.format_remove(c.SPLIT)
+
+        # Mixtape
+        if self.mixtape_checked.get():
+            self.format_add(c.MIXTAPE)
+        else:
+            self.format_remove(c.MIXTAPE)
+
+        # Compilation
+        if self.compilation_checked.get():
+            self.format_add(c.COMPILATION)
+        else:
+            self.format_remove(c.COMPILATION)
+        
+        # Collab
+        if self.collab_checked.get():
+            self.format_add(c.COLLAB)
+        else:
+            self.format_remove(c.COLLAB)
+        
+        # Live
+        if self.live_checked.get():
+            self.format_add(c.LIVE)
+        else:
+            self.format_remove(c.LIVE)
+        
+        # Archival
+        if self.archival_checked.get():
+            self.format_add(c.ARCHIVAL)
+        else:
+            self.format_remove(c.ARCHIVAL)
+        
+        # Demo
+        if self.demo_checked.get():
+            self.format_add(c.DEMO)
+        else:
+            self.format_remove(c.DEMO)
+
+        # Additional Release
+        if self.additional_release_checked.get():
+            self.format_add(c.ADDITIONAL_RELEASE)
+        else:
+            self.format_remove(c.ADDITIONAL_RELEASE)
+
+    def format_add(self, format):
+        """
+        Appends format to list of formats to be written to sheet.
+
+        Parameters:
+            format (str): Format of release.
+
+        Called by: CreateSheet.format_handler
+
+        Returns: none 
+        """
+
+        # Tests if format is not in formats
+        if self.formats.count(format) == 0:
+            self.formats.append(format)
+    
+    def format_remove(self, format):
+        """
+        Removes format from list of formats to be written to sheet.
+
+        Parameters:
+            format (str): Format to be removed from list of formats to write to sheet.
+        
+        Called by: CreateSheet.format_handler
+
+        Returns: none
+        """
+
+        # Tests if format exists in formats
+        if self.formats.count(format) > 0:
+            self.formats.remove(format)
+
+    def validate_year(self):
+        """
+        Validate the given year as an integer.
+
+        Parameters: none
+
+        Called from: CreateSheet.__init__
+
+        Returns:
+            Boolean: True - So that failures thrown in except don't permanently
+                        stop validation.
+        """
         year = self.year_entry_var.get().strip()
 
-        # handle if input is blank
         if year == "":
             self.year_message.set("")
             return True
@@ -904,10 +1025,20 @@ class CreateSheet(tkinter.Frame):
             self.year_message.set("ERROR: Please enter a valid integer for the year")
             self.year_invalid_message.grid(row=3, column=3)
         finally:
-            # return True because a failure thrown in except permanently stops validation
             return True
 
-    def isLinkValid(self):
+    def is_link_valid(self):
+        """
+        Validate the given Rate Your Music release URL against release_link_regex.
+
+        Parameters: none
+
+        Called from: CreateSheet.__init__
+
+        Returns:
+            Boolean: True - If input is blank or link is valid.
+            Boolean: False - If input does not match release_link_regex
+        """
         link = self.url_entry_var.get().strip()
 
         if link == "":
