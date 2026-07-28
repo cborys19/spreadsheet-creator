@@ -176,25 +176,11 @@ class CreateSheet(tkinter.Frame):
 
         self.year_entry_var = tkinter.StringVar() # Initialize string variable for release year
         self.year_message = tkinter.StringVar() # Initialize string variable for year message
+        self.url_entry_var = tkinter.StringVar()
+        self.url_message = tkinter.StringVar()
 
-        # Release year label and entry
-        ttk.Label(self, text="Enter year of release: ").grid(row=3, column=1)
-        ttk.Entry(
-            self,
-            textvariable=self.year_entry_var, 
-            validate="focusout", 
-            validatecommand=self.validate_year
-        ).grid(
-            row=3, 
-            column=2
-        )
-        
-        # Initialize message for reporting an invalid year entry
-        self.year_invalid_message = tkinter.Message(
-            self, 
-            textvariable=self.year_message,
-            fg="red"
-        )
+        self.checked_trees = set() # For tracking the currently checked genres
+        self.checked_formats = set() # For tracking currently checked formats
 
         # <genre>_tree Variables
         (
