@@ -29,6 +29,28 @@ date_regex = re.compile(
     r"(?:\d{2}(?:0[48]|[2468][048]|[13579][26])))))$"
 )
 
+
+class GenreTreeview(ttkw.CheckboxTreeview):
+    def _check_descendant(self, item):
+        pass # no-op: don't cascade check down to children
+
+    def _uncheck_descendant(self, item):
+        pass # no-op: don't cascade check down to children
+
+    def get_checked_all(self):
+        checked = []
+
+        def walk(item):
+            if self.tag_has("checked", item):
+                checked.append(item)
+            for child in self.get_children(item):
+                walk(child)
+
+        for top in self.get_children(""):
+            walk(top)
+        return checked
+
+
 class mainApp(tkinter.Tk):
     def __init__(self, *args, **kwargs):
         tkinter.Tk.__init__(self, *args, **kwargs)
