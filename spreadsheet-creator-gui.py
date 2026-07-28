@@ -1646,6 +1646,74 @@ class CreateSheet(tkinter.Frame):
             return False
 
         return True
+    
+    def clear_all_vars(self):
+        self.clear_main_vars()
+        # self.clear_tree_vars()
+        self.clear_checked_vars()
+
+    def clear_main_vars(self):
+        self.artist = ""
+        self.title = ""
+        self.year = 0
+        self.genre_families.clear()
+        self.subgenres.clear()
+        self.month_listened = ""
+        self.day = ""
+        self.date_listened = ""
+        self.runtime = ""
+        self.formats.clear()
+        self.personal_rating = ""
+        self.url = ""
+        self.year_entry_var = ""
+        self.year_message = ""
+        self.url_entry_var = ""
+        self.url_message = ""
+        self.checked_trees.clear()
+        self.checked_formats.clear()
+        self.checked_by_tree.clear()
+        self.url_invalid_message = ""
+        self.year_invalid_message = ""
+
+    # def clear_tree_vars(self):
+    #     (
+    #         self.blues_tree,
+    #         self.classical_tree,
+    #         self.country_tree,
+    #         self.electronic_tree,
+    #         self.experimental_tree,
+    #         self.folk_tree,
+    #         self.hip_hop_tree,
+    #         self.industrial_tree,
+    #         self.jazz_tree,
+    #         self.metal_tree,
+    #         self.pop_tree,
+    #         self.punk_tree,
+    #         self.r_and_b_tree,
+    #         self.reggae_tree,
+    #         self.regional_tree,
+    #         self.rock_tree,
+    #         self.soul_tree
+    #     ) = (self.destroy() for _ in range(17))
+
+    def clear_checked_vars(self):
+        self.blues_checked = False
+        self.classical_checked = False
+        self.country_checked = False
+        self.electronic_checked = False
+        self.experimental_checked = False
+        self.folk_checked = False
+        self.hip_hop_checked = False
+        self.industrial_checked = False
+        self.jazz_checked = False
+        self.metal_checked = False
+        self.pop_checked = False
+        self.punk_checked = False
+        self.r_and_b_checked = False
+        self.reggae_checked = False
+        self.regional_checked = False
+        self.rock_checked = False
+        self.soul_checked = False
 
 
 class EditSheet(tkinter.Frame):
