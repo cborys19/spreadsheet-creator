@@ -8,6 +8,8 @@ from tkinter import ttk, messagebox
 
 import sv_ttk
 
+import ttkwidgets as ttkw
+
 import consts
 
 LARGEFONT = ("Times New Roman", 35)
