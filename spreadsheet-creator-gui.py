@@ -316,7 +316,7 @@ class CreateSheet(tkinter.Frame):
             writer.writeheader()
 
             ttk.Entry(self, textvariable=self.artist).grid(row=1, column=2)
-            ttk.Entry(self, text=self.artist).grid(row=2, column=2)
+            ttk.Entry(self, textvariable=self.title).grid(row=2, column=2)
             ttk.Entry(
                 self,
                 textvariable=self.year_entry_var,
