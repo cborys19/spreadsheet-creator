@@ -2,4 +2,6 @@
 
 *.csv
 
+*.pyc
+
 rym-spreadsheet-creator.py
