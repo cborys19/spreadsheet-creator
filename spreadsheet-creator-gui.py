@@ -183,9 +183,9 @@ class CreateSheet(tkinter.Frame):
         self.personal_rating = ""
         self.url = tkinter.StringVar()
 
-        self.artist = tkinter.StringVar()
         self.year_entry_var = tkinter.StringVar() # Initialize string variable for release year
         self.year_message = tkinter.StringVar() # Initialize string variable for year message
+
         self.url_entry_var = tkinter.StringVar()
         self.url_message = tkinter.StringVar()
 
