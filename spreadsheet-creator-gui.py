@@ -821,6 +821,7 @@ class CreateSheet(tkinter.Frame):
             self.json_data[genre]
         )
 
+        tree.bind("<<TreeviewSelect>>", self.on_select_subgenre)
         tree.grid(row=row_num, column=col_num)
 
     def genre_treeview_remove(self, tree):
