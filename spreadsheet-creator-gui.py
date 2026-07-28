@@ -72,7 +72,7 @@ class CreateSheetPrompt(tkinter.Frame):
         ttk.Label(self, text="Create Sheet", font=LARGEFONT).grid(row=0, column=4, padx=10, pady=10)
 
         ttk.Label(self, text="Enter the name of your sheet: ").grid(row=1,column=1)
-        ttk.Entry(self).grid(row=2, column=1)
+        ttk.Entry(self, textvariable=new_sheet_name).grid(row=2, column=1)
 
         self.list_link_entry = tkinter.StringVar()
         ttk.Label(self, text="Enter URL to list on Rate Your Music: ").grid(row=4, column=1)
