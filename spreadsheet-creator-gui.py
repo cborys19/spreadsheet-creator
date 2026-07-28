@@ -73,6 +73,16 @@ class mainApp(tkinter.Tk):
         self.show_frame(MainMenu)
     
     def show_frame(self, container):
+        """
+        Function to show the given frame.
+
+        Parameters:
+            container (ttk.Frame): UI Frame to be shown within application.
+        
+        Called by: MainApp.__init__
+
+        Returns: none
+        """
         frame = self.frames[container]
         frame.tkraise()
 
@@ -137,6 +147,18 @@ class CreateSheetPrompt(tkinter.Frame):
         )
 
     def validate_input(self):
+        """
+        Callback function to handle validating user input given on the initial
+        prompt when creating a sheet. Validates if the URL is a Rate Your Music
+        list and if the user checked a radio button corresponding to if the
+        list has to do with classical music or not.
+
+        Parameters: none
+
+        Called by: CreateSheetPrompt.__init__
+
+        Returns: none
+        """
         link_value = self.list_link_entry.get()
         classical_sheet_choice = self.classical_prompt_choice.get()
         if self.is_link_valid(link_value) and classical_sheet_choice == 1:
@@ -158,6 +180,19 @@ class CreateSheetPrompt(tkinter.Frame):
             )
     
     def is_link_valid(self, link):
+        """
+        Function to verify if the entered Rate Your Music list URL is valid or
+        not. Compares against regular expression.
+
+        Parameters:
+            link (str): URL to be validated aganst regex.
+
+        Called by: CreateSheetPrompt.validate_input
+        
+        Returns:
+            Boolean: True - If entered URL is a valid Rate Your Music list
+            Boolean: False - If entered URL is not a valid Rate Your Music list
+        """
         if list_link_regex.match(link):
             return True
         else:
@@ -982,6 +1017,15 @@ class CreateSheet(tkinter.Frame):
             self.genre_families.remove(genre)
 
     def on_select_subgenre(self, event):
+        """
+        Callback function to handle checking a subgenre within a genre tree.
+
+        Parameters: none
+
+        Called by: CreateSheet.genre_treeview_add
+
+        Returns: none
+        """
         tree = event.widget
 
         checked_iids = tree.get_checked_all()
@@ -1219,11 +1263,29 @@ class CreateSheet(tkinter.Frame):
         return True
     
     def clear_all_vars(self):
+        """
+        Clear all variables.
+
+        Parameters: none
+
+        Called from: nowhere at the moment #TODO - Call clear_all_vars
+
+        Returns: none
+        """
         self.clear_main_vars()
         # self.clear_tree_vars()
         self.clear_checked_vars()
 
     def clear_main_vars(self):
+        """
+        Clear all "main" variables used for storing release information.
+
+        Parameters: none
+
+        Called from: nowhere at the moment #TODO - Call clear_main_vars
+
+        Returns: none
+        """
         self.artist = ""
         self.title = ""
         self.year = 0
@@ -1247,6 +1309,15 @@ class CreateSheet(tkinter.Frame):
         self.year_invalid_message = ""
 
     # def clear_tree_vars(self):
+    #     """
+    #     Clear all genre trees.
+
+    #     Parameters: none
+
+    #     Called from: nowhere at the moment: #TODO - Call clear_tree_vars
+
+    #     Returns: none
+    #     """
     #     (
     #         self.blues_tree,
     #         self.classical_tree,
@@ -1268,6 +1339,15 @@ class CreateSheet(tkinter.Frame):
     #     ) = (self.destroy() for _ in range(17))
 
     def clear_checked_vars(self):
+        """
+        Clear all variables determining if a parent genre box is checked.
+
+        Parameters: none
+
+        Called from: nowhere at the moment: #TODO - Call clear_checked_vars
+
+        Return: none
+        """
         self.blues_checked = False
         self.classical_checked = False
         self.country_checked = False
