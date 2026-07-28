@@ -912,6 +912,18 @@ class CreateSheet(tkinter.Frame):
         if self.genre_families.count(genre) > 0:
             self.genre_families.remove(genre)
 
+    def on_select_subgenre(self, event):
+        tree = event.widget
+        # self.subgenres.append(tree.selection())
+
+        self.subgenres.append(tree.item(tree.selection(), "text"))
+        print(self.subgenres)
+
+        # for i in self.subgenres:
+        #     item_text = tree.item(i, "text")
+        
+        # print(item_text)
+
     def validate_runtime(self):
         """
         Validates the release's runtime entered by the user. The runtime
