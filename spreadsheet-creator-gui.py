@@ -160,15 +160,6 @@ class CreateSheet(tkinter.Frame):
         self.url = tkinter.StringVar()
 
         self.artist = tkinter.StringVar()
-        ttk.Label(self, text="Enter name of release artist: ").grid(row=1, column=1)
-        ttk.Entry(self, textvariable=self.artist).grid(row=1, column=2)
-
-        # Release title label and entry
-        ttk.Label(self, text="Enter title of release: ").grid(row=2, column=1)
-        ttk.Entry(self, text=self.artist).grid(row=2, column=2)
-
-        print(self.artist)
-
         self.year_entry_var = tkinter.StringVar() # Initialize string variable for release year
         self.year_message = tkinter.StringVar() # Initialize string variable for year message
         self.url_entry_var = tkinter.StringVar()
