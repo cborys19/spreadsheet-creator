@@ -581,7 +581,6 @@ class CreateSheet(tkinter.Frame):
             self.year_message.set("ERROR: Please enter a valid integer for the year")
             print(f"{e}")
             return False
-            return True
 
     def genre_handler(self):
         """
