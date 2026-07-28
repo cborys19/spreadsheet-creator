@@ -1331,6 +1331,13 @@ class CreateSheet(tkinter.Frame):
             tree.delete(*tree.get_children())
             tree.grid_remove()
 
+        if tree in self.checked_by_tree:
+            del self.checked_by_tree[tree]
+            self.subgenres = [
+                text for tree_checked in self.checked_by_tree.values()
+                for text in tree_checked
+            ]
+
     def genre_treeview_generator(self, tree, parent, genre_list):
         """
         Recursively creates ttk Treeviews from each parent genre and its subgenres.
