@@ -156,14 +156,6 @@ class CreateSheet(tkinter.Frame):
         self.personal_rating = ""
         self.url = tkinter.StringVar()
 
-        # Loads in genre JSON data
-        with open('genres.json', encoding='utf8') as file:
-            self.json_data = json.load(file)
-
-        # CreateSheet frame label
-        ttk.Label(self, text="Create Sheet", font=LARGEFONT).grid(row=0, column=4, padx=10, pady=10)
-
-        # Release artist label and entry
         self.artist = tkinter.StringVar()
         ttk.Label(self, text="Enter name of release artist: ").grid(row=1, column=1)
         ttk.Entry(self, textvariable=self.artist).grid(row=1, column=2)
