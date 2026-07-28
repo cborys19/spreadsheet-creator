@@ -700,6 +700,20 @@ class CreateSheet(tkinter.Frame):
                 column=2
             )
 
+            ttk.Button(self.content,
+                       text="Write to Sheet",
+                       command=self.validate_content
+            ).grid(
+                row=15,
+                column=5
+            )
+
+            #TODO - Will eventually also need function to clear data fields in UI
+
+    def validate_content(self):
+        # TODO - Write function to validate all relevant content before writing to sheet
+        print("Coming soon!")
+
     def validate_year(self):
         """
         Validate the given year as an integer.
