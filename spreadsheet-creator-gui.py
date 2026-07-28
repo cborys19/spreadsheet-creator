@@ -200,9 +200,62 @@ class CreateSheetPrompt(tkinter.Frame):
             return False
 
 
+class ScrollableFrame(tkinter.Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.canvas = tkinter.Canvas(self, highlightthickness=0)
+        scrollbar = ttk.Scrollbar(
+            self,
+            orient="vertical",
+            command=self.canvas.yview
+        )
+
+        self.content = ttk.Frame(self.canvas)
+
+        self.window = self.canvas.create_window(
+            (0, 0),
+            window=self.content,
+            anchor="nw"
+        )
+
+        self.content.bind(
+            "<Configure>",
+            lambda e: self.canvas.configure(
+                scrollregion=self.canvas.bbox("all")
+            )
+        )
+
+        self.canvas.bind(
+            "<Configure>",
+            lambda e: self.canvas.itemconfigure(
+                self.window,
+                width=e.width
+            )
+        )
+
+        self.canvas.configure(yscrollcommand=scrollbar.set)
+
+        self.canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
+        self.canvas.bind_all(
+            "<MouseWheel>",
+            lambda e: self.canvas.yview_scroll(
+                int(-e.delta / 120),
+                "units"
+            )
+        )
+
+
 class CreateSheet(tkinter.Frame):
     def __init__(self, parent, controller):
         ttk.Frame.__init__(self, parent)
+
+        scroll = ScrollableFrame(self)
+        scroll.pack(fill="both", expand=True)
+
+        self.content = scroll.content
 
         # All fields that will be written to sheet
         self.artist = tkinter.StringVar()
@@ -248,7 +301,7 @@ class CreateSheet(tkinter.Frame):
             self.regional_tree,
             self.rock_tree,
             self.soul_tree
-        ) = (GenreTreeview(self) for _ in range(17))
+        ) = (GenreTreeview(self.content) for _ in range(17))
 
         # <genre>_checked Variables
         (
@@ -285,24 +338,24 @@ class CreateSheet(tkinter.Frame):
             self.additional_release_checked
         ) = (tkinter.BooleanVar() for _ in range(10))
 
-        ttk.Label(self, text="Create Sheet", font=LARGEFONT).grid(row=0, column=4, padx=10, pady=10)
+        ttk.Label(self.content, text="Create Sheet", font=LARGEFONT).grid(row=0, column=4, padx=10, pady=10)
 
-        ttk.Label(self, text="Enter name of release artist: ").grid(row=1, column=1)
-        ttk.Label(self, text="Enter title of release: ").grid(row=2, column=1)
-        ttk.Label(self, text="Enter year of release: ").grid(row=3, column=1)
-        ttk.Label(self, text="Genre Families").grid(row=4, column=1)
-        ttk.Label(self, text="Enter the release's runtime (MM:SS or HH:MM:SS)").grid(row=8, column=1)
-        ttk.Label(self, text="Format(s) [check all that apply]").grid(row=9, column=1)
-        ttk.Label(self, text="Enter the Rate Your Music URL of the release").grid(row=10, column=1)
+        ttk.Label(self.content, text="Enter name of release artist: ").grid(row=1, column=1)
+        ttk.Label(self.content, text="Enter title of release: ").grid(row=2, column=1)
+        ttk.Label(self.content, text="Enter year of release: ").grid(row=3, column=1)
+        ttk.Label(self.content, text="Genre Families").grid(row=4, column=1)
+        ttk.Label(self.content, text="Enter the release's runtime (MM:SS or HH:MM:SS)").grid(row=8, column=1)
+        ttk.Label(self.content, text="Format(s) [check all that apply]").grid(row=9, column=1)
+        ttk.Label(self.content, text="Enter the Rate Your Music URL of the release").grid(row=10, column=1)
 
         self.year_invalid_message = tkinter.Message(
-            self, 
+            self.content,
             textvariable=self.year_message,
             fg="red"
         )
 
         self.url_invalid_message = tkinter.Message(
-            self,
+            self.content,
             textvariable=self.url_message,
             fg="red"
         )
@@ -315,10 +368,10 @@ class CreateSheet(tkinter.Frame):
             writer = csv.DictWriter(spreadsheet, dialect='excel', fieldnames=fieldnames)
             writer.writeheader()
 
-            ttk.Entry(self, textvariable=self.artist).grid(row=1, column=2)
-            ttk.Entry(self, textvariable=self.title).grid(row=2, column=2)
+            ttk.Entry(self.content, textvariable=self.artist).grid(row=1, column=2)
+            ttk.Entry(self.content, textvariable=self.title).grid(row=2, column=2)
             ttk.Entry(
-                self,
+                self.content,
                 textvariable=self.year_entry_var,
                 validate="focusout",
                 validatecommand=self.validate_year
@@ -329,7 +382,7 @@ class CreateSheet(tkinter.Frame):
 
             # Genre family checkbuttons
             ttk.Checkbutton(
-                self, 
+                self.content,
                 text=consts.BLUES,
                 variable=self.blues_checked,
                 offvalue=False,
@@ -340,7 +393,7 @@ class CreateSheet(tkinter.Frame):
                 column=2
             )
             ttk.Checkbutton(
-                self, 
+                self.content,
                 text=consts.CLASSICAL, 
                 variable=self.classical_checked,
                 offvalue=False,
@@ -351,7 +404,7 @@ class CreateSheet(tkinter.Frame):
                 column=3
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.COUNTRY,
                 variable=self.country_checked,
                 offvalue=False,
@@ -362,7 +415,7 @@ class CreateSheet(tkinter.Frame):
                 column=4
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.ELECTRONIC,
                 variable=self.electronic_checked,
                 offvalue=False,
@@ -373,7 +426,7 @@ class CreateSheet(tkinter.Frame):
                 column=5
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.EXPERIMENTAL,
                 variable=self.experimental_checked,
                 offvalue=False,
@@ -385,7 +438,7 @@ class CreateSheet(tkinter.Frame):
             )
 
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.FOLK,
                 variable=self.folk_checked,
                 offvalue=False,
@@ -396,7 +449,7 @@ class CreateSheet(tkinter.Frame):
                 column=2
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.HIP_HOP,
                 variable=self.hip_hop_checked,
                 offvalue=False,
@@ -407,7 +460,7 @@ class CreateSheet(tkinter.Frame):
                 column=3
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.INDUSTRIAL,
                 variable=self.industrial_checked,
                 offvalue=False,
@@ -418,7 +471,7 @@ class CreateSheet(tkinter.Frame):
                 column=4
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.JAZZ,
                 variable=self.jazz_checked,
                 offvalue=False,
@@ -429,7 +482,7 @@ class CreateSheet(tkinter.Frame):
                 column=5
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.METAL,
                 variable=self.metal_checked,
                 offvalue=False,
@@ -441,7 +494,7 @@ class CreateSheet(tkinter.Frame):
             )
             
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.POP,
                 variable=self.pop_checked,
                 offvalue=False,
@@ -452,7 +505,7 @@ class CreateSheet(tkinter.Frame):
                 column=2
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.PUNK,
                 variable=self.punk_checked,
                 offvalue=False,
@@ -463,7 +516,7 @@ class CreateSheet(tkinter.Frame):
                 column=3
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.R_AND_B,
                 variable=self.r_and_b_checked,
                 offvalue=False,
@@ -474,7 +527,7 @@ class CreateSheet(tkinter.Frame):
                 column=4
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.REGGAE,
                 variable=self.reggae_checked,
                 offvalue=False,
@@ -485,7 +538,7 @@ class CreateSheet(tkinter.Frame):
                 column=5
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.REGIONAL,
                 variable=self.regional_checked,
                 offvalue=False,
@@ -497,7 +550,7 @@ class CreateSheet(tkinter.Frame):
             )
 
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.ROCK,
                 variable=self.rock_checked,
                 offvalue=False,
@@ -508,7 +561,7 @@ class CreateSheet(tkinter.Frame):
                 column=3
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text=consts.SOUL,
                 variable=self.soul_checked,
                 offvalue=False,
@@ -520,14 +573,14 @@ class CreateSheet(tkinter.Frame):
             )
 
             ttk.Entry(
-                self,
+                self.content,
                 textvariable=self.runtime,
                 validate="focusout",
                 validatecommand=self.validate_runtime
             )
 
             ttk.Checkbutton(
-                self,
+                self.content,
                 text="Album",
                 variable=self.album_checked,
                 offvalue=False,
@@ -538,7 +591,7 @@ class CreateSheet(tkinter.Frame):
                 column=2
             )
             ttk.Checkbutton(
-                self,
+                self.content,
                 text="EP",
                 variable=self.ep_checked,
                 offvalue=False,
@@ -549,7 +602,7 @@ class CreateSheet(tkinter.Frame):
                 column=3
             )
             ttk.Checkbutton(
-                self, 
+                self.content, 
                 text="Split", 
                 variable=self.split_checked, 
                 offvalue=False, 
@@ -560,7 +613,7 @@ class CreateSheet(tkinter.Frame):
                 column=4
             )
             ttk.Checkbutton(
-                self, 
+                self.content, 
                 text="Mixtape", 
                 variable=self.mixtape_checked, 
                 offvalue=False, 
@@ -571,7 +624,7 @@ class CreateSheet(tkinter.Frame):
                 column=5
             )
             ttk.Checkbutton(
-                self, 
+                self.content, 
                 text="Compilation", 
                 variable=self.compilation_checked, 
                 offvalue=False, 
@@ -582,7 +635,7 @@ class CreateSheet(tkinter.Frame):
                 column=6
             )
             ttk.Checkbutton(
-                self, 
+                self.content, 
                 text="Collab", 
                 variable=self.collab_checked, 
                 offvalue=False, 
@@ -593,7 +646,7 @@ class CreateSheet(tkinter.Frame):
                 column=7
             )
             ttk.Checkbutton(
-                self, 
+                self.content, 
                 text="Live", 
                 variable=self.live_checked, 
                 offvalue=False, 
@@ -604,7 +657,7 @@ class CreateSheet(tkinter.Frame):
                 column=8
             )
             ttk.Checkbutton(
-                self, 
+                self.content, 
                 text="Archival", 
                 variable=self.archival_checked, 
                 offvalue=False, 
@@ -615,7 +668,7 @@ class CreateSheet(tkinter.Frame):
                 column=9
             )
             ttk.Checkbutton(
-                self, 
+                self.content, 
                 text="Demo", 
                 variable=self.demo_checked, 
                 offvalue=False, 
@@ -626,7 +679,7 @@ class CreateSheet(tkinter.Frame):
                 column=10
             )
             ttk.Checkbutton(
-                self, 
+                self.content, 
                 text="Additional Release", 
                 variable=self.additional_release_checked, 
                 offvalue=False, 
@@ -638,7 +691,7 @@ class CreateSheet(tkinter.Frame):
             )
 
             ttk.Entry(
-                self, 
+                self.content, 
                 textvariable=self.url_entry_var, 
                 validate="focusout", 
                 validatecommand=self.is_link_valid
