@@ -101,7 +101,7 @@ class CreateSheetPrompt(tkinter.Frame):
             column=1
         )
 
-        ttk.Button(self, text="Create Sheet", command=self.validateInput).grid(row=10, column=1)
+        ttk.Button(self, text="Create Sheet", command=self.validate_input).grid(row=10, column=1)
 
         ttk.Button(
             self,
