@@ -211,7 +211,7 @@ class CreateSheet(tkinter.Frame):
             self.regional_tree,
             self.rock_tree,
             self.soul_tree
-        ) = (ttkw.CheckboxTreeview(self) for _ in range(17))
+        ) = (GenreTreeview(self) for _ in range(17))
 
         # <genre>_checked Variables
         (
