@@ -110,7 +110,7 @@ class CreateSheetPrompt(tkinter.Frame):
             column=3
         )
 
-    def validateInput(self):
+    def validate_input(self):
         link_value = self.list_link_entry.get()
         classical_sheet_choice = self.classical_prompt_choice.get()
         if self.is_link_valid(link_value) and classical_sheet_choice == 1:
