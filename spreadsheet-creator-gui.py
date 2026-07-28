@@ -1413,10 +1413,27 @@ class CreateSheet(tkinter.Frame):
     def on_select_subgenre(self, event):
         tree = event.widget
 
-        self.subgenres.append(tree.item(tree.selection(), "text"))
+        checked_iids = tree.get_checked_all()
+        new_checked = [tree.item(iid, "text") for iid in checked_iids]
+
+        old_checked = self.checked_by_tree.get(tree, [])
+        added = [t for t in new_checked if t not in old_checked]
+        removed = [t for t in old_checked if t not in new_checked]
+
+        self.checked_by_tree[tree] = new_checked
+
+        self.subgenres = [
+            text for tree_checked in self.checked_by_tree.values()
+            for text in tree_checked
+        ]
+
+        if added:
+            print(f"Added: {added}")
+        elif removed:
+            print(f"Removed: {removed}")
+
         print(self.subgenres)
 
-        # for i in self.subgenres:
     def validate_runtime(self):
         """
         Validates the release's runtime entered by the user. The runtime
