@@ -576,10 +576,11 @@ class CreateSheet(tkinter.Frame):
             self.year_message.set("")
             if self.year_invalid_message.winfo_ismapped():
                 self.year_invalid_message.grid_remove()
-        except:
+            return True
+        except Exception as e:
             self.year_message.set("ERROR: Please enter a valid integer for the year")
-            self.year_invalid_message.grid(row=3, column=3)
-        finally:
+            print(f"{e}")
+            return False
             return True
 
     def genre_handler(self):
