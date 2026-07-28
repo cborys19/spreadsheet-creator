@@ -192,6 +192,8 @@ class CreateSheet(tkinter.Frame):
         self.checked_trees = set() # For tracking the currently checked genres
         self.checked_formats = set() # For tracking currently checked formats
 
+        self.checked_by_tree = {} # List of checked genre+subgenre text so genres don't step on each other
+
         # <genre>_tree Variables
         (
             self.blues_tree,
