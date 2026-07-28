@@ -8,7 +8,7 @@ from tkinter import ttk, messagebox
 
 import sv_ttk
 
-import consts as c
+import consts
 
 LARGEFONT = ("Times New Roman", 35)
 
