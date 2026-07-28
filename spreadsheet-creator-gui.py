@@ -12,6 +12,10 @@ import consts as c
 
 LARGEFONT = ("Times New Roman", 35)
 
+new_sheet_name = ""
+fieldnames = ['artist', 'title', 'year', 'genre_family',
+              'subgenres', 'month', 'day', 'date', 
+              'runtime', 'format', 'rating', 'link']
 list_link_regex = re.compile(r"^https://rateyourmusic\.com/list/.+$")
 release_link_regex = re.compile(r"^https://rateyourmusic\.com/release/.+$")
 date_regex = re.compile(
