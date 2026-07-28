@@ -1393,7 +1393,7 @@ class CreateSheet(tkinter.Frame):
         # Tests if genre is not in genre_families
         if self.genre_families.count(genre) == 0:
             self.genre_families.append(genre)
-   
+
     def genre_family_remove(self, genre):
         """
         Removes genre from list of genres to be written to sheet.
@@ -1600,7 +1600,7 @@ class CreateSheet(tkinter.Frame):
         # Tests if format is not in formats
         if self.formats.count(format) == 0:
             self.formats.append(format)
-    
+
     def format_remove(self, format):
         """
         Removes format from list of formats to be written to sheet.
