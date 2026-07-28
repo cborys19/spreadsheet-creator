@@ -576,24 +576,444 @@ class CreateSheet(tkinter.Frame):
                 column=11
             )
 
-        self.url_entry_var = tkinter.StringVar()
-        ttk.Label(self, text="Enter the Rate Your Music URL of the release").grid(row=9, column=1)
-        ttk.Entry(
-            self, 
-            textvariable=self.url_entry_var, 
-            validate="focusout", 
-            validatecommand=self.is_link_valid
-        ).grid(
-            row=9, 
-            column=2
-        )
+            ttk.Entry(
+                self, 
+                textvariable=self.url_entry_var, 
+                validate="focusout", 
+                validatecommand=self.is_link_valid
+            ).grid(
+                row=10, 
+                column=2
+            )
+
+            
+
+
+        # CreateSheet frame label
+        # ttk.Label(self, text="Create Sheet", font=LARGEFONT).grid(row=0, column=4, padx=10, pady=10)
+
+        # Release artist label and entry
+        # self.artist = tkinter.StringVar()
+        # ttk.Label(self, text="Enter name of release artist: ").grid(row=1, column=1)
+        # ttk.Entry(self, textvariable=self.artist).grid(row=1, column=2)
+
+        # Release title label and entry
+        # ttk.Label(self, text="Enter title of release: ").grid(row=2, column=1)
+        # ttk.Entry(self, text=self.artist).grid(row=2, column=2)
+
+        # self.year_entry_var = tkinter.StringVar() # Initialize string variable for release year
+        # self.year_message = tkinter.StringVar() # Initialize string variable for year message
+
+        # Release year label and entry
+        # ttk.Label(self, text="Enter year of release: ").grid(row=3, column=1)
+        # ttk.Entry(
+        #     self,
+        #     textvariable=self.year_entry_var, 
+        #     validate="focusout", 
+        #     validatecommand=self.validate_year
+        # ).grid(
+        #     row=3, 
+        #     column=2
+        # )
         
-        self.url_message = tkinter.StringVar()
-        self.url_invalid_message = tkinter.Message(
-            self,
-            textvariable=self.url_message,
-            fg="red"
-        )
+        # Initialize message for reporting an invalid year entry
+        # self.year_invalid_message = tkinter.Message(
+        #     self, 
+        #     textvariable=self.year_message,
+        #     fg="red"
+        # )
+
+        # # <genre>_tree Variables
+        # (
+        #     self.blues_tree, 
+        #     self.classical_tree, 
+        #     self.country_tree, 
+        #     self.electronic_tree,
+        #     self.experimental_tree, 
+        #     self.folk_tree, 
+        #     self.hip_hop_tree, 
+        #     self.industrial_tree,
+        #     self.jazz_tree, 
+        #     self.metal_tree, 
+        #     self.pop_tree, 
+        #     self.punk_tree, 
+        #     self.r_and_b_tree, 
+        #     self.reggae_tree, 
+        #     self.regional_tree, 
+        #     self.rock_tree, 
+        #     self.soul_tree 
+        # ) = (ttk.Treeview(self) for _ in range(17))
+
+        # # <genre>_checked Variables
+        # (
+        #     self.blues_checked,
+        #     self.classical_checked,
+        #     self.country_checked,
+        #     self.electronic_checked,
+        #     self.experimental_checked,
+        #     self.folk_checked,
+        #     self.hip_hop_checked,
+        #     self.industrial_checked,
+        #     self.jazz_checked,
+        #     self.metal_checked,
+        #     self.pop_checked,
+        #     self.punk_checked,
+        #     self.r_and_b_checked,
+        #     self.reggae_checked,
+        #     self.regional_checked,
+        #     self.rock_checked,
+        #     self.soul_checked
+        # ) = (tkinter.BooleanVar() for _ in range(17))
+
+
+        # Genre Family Checkbuttons
+        # ttk.Label(self, text="Genre Families").grid(row=4, column=1)
+        # ttk.Checkbutton(
+        #     self, 
+        #     text=consts.BLUES, 
+        #     variable=self.blues_checked, 
+        #     offvalue=False, 
+        #     onvalue=True, 
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=4,
+        #     column=2
+        # )
+        # ttk.Checkbutton(
+        #     self, 
+        #     text=consts.CLASSICAL, 
+        #     variable=self.classical_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=4,
+        #     column=3
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.COUNTRY,
+        #     variable=self.country_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=4,
+        #     column=4
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.ELECTRONIC,
+        #     variable=self.electronic_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=4,
+        #     column=5
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.EXPERIMENTAL,
+        #     variable=self.experimental_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=4,
+        #     column=6
+        # )
+
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.FOLK,
+        #     variable=self.folk_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=5,
+        #     column=2
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.HIP_HOP,
+        #     variable=self.hip_hop_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=5,
+        #     column=3
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.INDUSTRIAL,
+        #     variable=self.industrial_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=5,
+        #     column=4
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.JAZZ,
+        #     variable=self.jazz_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=5,
+        #     column=5
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.METAL,
+        #     variable=self.metal_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=5,
+        #     column=6
+        # )
+        
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.POP,
+        #     variable=self.pop_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=6,
+        #     column=2
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.PUNK,
+        #     variable=self.punk_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=6,
+        #     column=3
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.R_AND_B,
+        #     variable=self.r_and_b_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=6,
+        #     column=4
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.REGGAE,
+        #     variable=self.reggae_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=6,
+        #     column=5
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.REGIONAL,
+        #     variable=self.regional_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=6,
+        #     column=6
+        # )
+
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.ROCK,
+        #     variable=self.rock_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=7,
+        #     column=3
+        # )
+        # ttk.Checkbutton(
+        #     self,
+        #     text=consts.SOUL,
+        #     variable=self.soul_checked,
+        #     offvalue=False,
+        #     onvalue=True,
+        #     command=self.genre_handler
+        # ).grid(
+        #     row=7,
+        #     column=5
+        # )
+
+        # ttk.Label(self, text="Enter the release's runtime (MM:SS or HH:MM:SS)").grid(row=8, column=1)
+        # ttk.Entry(
+        #     self, 
+        #     textvariable=self.runtime, 
+        #     validate="focusout", 
+        #     validatecommand=self.validate_runtime
+        # )
+
+        # # <format>_checked Variables
+        # (
+        #     self.album_checked,
+        #     self.ep_checked,
+        #     self.split_checked,
+        #     self.mixtape_checked,
+        #     self.compilation_checked,
+        #     self.collab_checked,
+        #     self.live_checked,
+        #     self.archival_checked,
+        #     self.demo_checked,
+        #     self.additional_release_checked
+        # ) = (tkinter.BooleanVar() for _ in range(10))
+
+        # self.checked_formats = set() # For tracking currently checked formats
+
+        # Release Format Checkbuttons
+        # ttk.Label(self, text="Format(s) [check all that apply]").grid(row=9, column=1)
+        # ttk.Checkbutton(
+        #     self, 
+        #     text="Album", 
+        #     variable=self.album_checked, 
+        #     offvalue=False, 
+        #     onvalue=True,
+        #     command=self.format_handler
+        # ).grid(
+        #     row=8,
+        #     column=2
+        # )
+        # ttk.Checkbutton(
+        #     self, 
+        #     text="EP", 
+        #     variable=self.ep_checked, 
+        #     offvalue=False, 
+        #     onvalue=True,
+        #     command=self.format_handler
+        # ).grid(
+        #     row=8,
+        #     column=3
+        # )
+        # ttk.Checkbutton(
+        #     self, 
+        #     text="Split", 
+        #     variable=self.split_checked, 
+        #     offvalue=False, 
+        #     onvalue=True,
+        #     command=self.format_handler
+        # ).grid(
+        #     row=8,
+        #     column=4
+        # )
+        # ttk.Checkbutton(
+        #     self, 
+        #     text="Mixtape", 
+        #     variable=self.mixtape_checked, 
+        #     offvalue=False, 
+        #     onvalue=True,
+        #     command=self.format_handler
+        # ).grid(
+        #     row=8,
+        #     column=5
+        # )
+        # ttk.Checkbutton(
+        #     self, 
+        #     text="Compilation", 
+        #     variable=self.compilation_checked, 
+        #     offvalue=False, 
+        #     onvalue=True,
+        #     command=self.format_handler
+        # ).grid(
+        #     row=8,
+        #     column=6
+        # )
+        # ttk.Checkbutton(
+        #     self, 
+        #     text="Collab", 
+        #     variable=self.collab_checked, 
+        #     offvalue=False, 
+        #     onvalue=True,
+        #     command=self.format_handler
+        # ).grid(
+        #     row=8,
+        #     column=7
+        # )
+        # ttk.Checkbutton(
+        #     self, 
+        #     text="Live", 
+        #     variable=self.live_checked, 
+        #     offvalue=False, 
+        #     onvalue=True,
+        #     command=self.format_handler
+        # ).grid(
+        #     row=8,
+        #     column=8
+        # )
+        # ttk.Checkbutton(
+        #     self, 
+        #     text="Archival", 
+        #     variable=self.archival_checked, 
+        #     offvalue=False, 
+        #     onvalue=True,
+        #     command=self.format_handler
+        # ).grid(
+        #     row=8,
+        #     column=9
+        # )
+        # ttk.Checkbutton(
+        #     self, 
+        #     text="Demo", 
+        #     variable=self.demo_checked, 
+        #     offvalue=False, 
+        #     onvalue=True,
+        #     command=self.format_handler
+        # ).grid(
+        #     row=8,
+        #     column=10
+        # )
+        # ttk.Checkbutton(
+        #     self, 
+        #     text="Additional Release", 
+        #     variable=self.additional_release_checked, 
+        #     offvalue=False, 
+        #     onvalue=True,
+        #     command=self.format_handler
+        # ).grid(
+        #     row=8,
+        #     column=11
+        # )
+
+        # self.url_entry_var = tkinter.StringVar()
+        # ttk.Label(self, text="Enter the Rate Your Music URL of the release").grid(row=10, column=1)
+        # ttk.Entry(
+        #     self, 
+        #     textvariable=self.url_entry_var, 
+        #     validate="focusout", 
+        #     validatecommand=self.is_link_valid
+        # ).grid(
+        #     row=9, 
+        #     column=2
+        # )
+        
+        # self.url_message = tkinter.StringVar()
+        # self.url_invalid_message = tkinter.Message(
+        #     self,
+        #     textvariable=self.url_message,
+        #     fg="red"
+        # )
 
     def validate_year(self):
         """
