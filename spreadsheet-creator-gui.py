@@ -579,6 +579,7 @@ class CreateSheet(tkinter.Frame):
             return True
         except Exception as e:
             self.year_message.set("ERROR: Please enter a valid integer for the year")
+            self.year_invalid_message.grid(row=3, column=3)
             print(f"{e}")
             return False
 
