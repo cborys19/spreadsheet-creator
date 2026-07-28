@@ -1059,207 +1059,207 @@ class CreateSheet(tkinter.Frame):
 
         # Blues
         if self.blues_checked.get():
-            if c.BLUES not in self.added_trees:
-                self.genre_treeview_add(self.blues_tree, c.BLUES, 10, 2)
-                self.added_trees.add(c.BLUES)
-                self.genre_family_add(c.BLUES)
+            if consts.BLUES not in self.checked_trees:
+                self.genre_treeview_add(self.blues_tree, consts.BLUES, 11, 2)
+                self.checked_trees.add(consts.BLUES)
+                self.genre_family_add(consts.BLUES)
         else:
-            if c.BLUES in self.added_trees:
+            if consts.BLUES in self.checked_trees:
                 self.genre_treeview_remove(self.blues_tree)
-                self.added_trees.remove(c.BLUES)
-                self.genre_family_remove(c.BLUES)
+                self.checked_trees.remove(consts.BLUES)
+                self.genre_family_remove(consts.BLUES)
         
         # Classical
         if self.classical_checked.get():
-            if c.CLASSICAL not in self.added_trees:
-                self.genre_treeview_add(self.classical_tree, c.CLASSICAL, 10, 3)
-                self.added_trees.add(c.CLASSICAL)
-                self.genre_family_add(c.CLASSICAL)
+            if consts.CLASSICAL not in self.checked_trees:
+                self.genre_treeview_add(self.classical_tree, consts.CLASSICAL, 11, 3)
+                self.checked_trees.add(consts.CLASSICAL)
+                self.genre_family_add(consts.CLASSICAL)
         else:
-            if c.CLASSICAL in self.added_trees:
+            if consts.CLASSICAL in self.checked_trees:
                 self.genre_treeview_remove(self.classical_tree)
-                self.added_trees.remove(c.CLASSICAL)
-                self.genre_family_remove(c.CLASSICAL)
+                self.checked_trees.remove(consts.CLASSICAL)
+                self.genre_family_remove(consts.CLASSICAL)
 
         # Country
         if self.country_checked.get():
-            if c.COUNTRY not in self.added_trees:
-                self.genre_treeview_add(self.country_tree, c.COUNTRY, 10, 4)
-                self.added_trees.add(c.COUNTRY)
-                self.genre_family_add(c.COUNTRY)
+            if consts.COUNTRY not in self.checked_trees:
+                self.genre_treeview_add(self.country_tree, consts.COUNTRY, 11, 4)
+                self.checked_trees.add(consts.COUNTRY)
+                self.genre_family_add(consts.COUNTRY)
         else:
-            if c.COUNTRY in self.added_trees:
+            if consts.COUNTRY in self.checked_trees:
                 self.genre_treeview_remove(self.country_tree)
-                self.added_trees.remove(c.COUNTRY)
-                self.genre_family_remove(c.COUNTRY)
+                self.checked_trees.remove(consts.COUNTRY)
+                self.genre_family_remove(consts.COUNTRY)
 
         # Electronic
         if self.electronic_checked.get():
-            if c.ELECTRONIC not in self.added_trees:
-                self.genre_treeview_add(self.electronic_tree, c.ELECTRONIC, 10, 5)
-                self.added_trees.add(c.ELECTRONIC)
-                self.genre_family_add(c.ELECTRONIC)
+            if consts.ELECTRONIC not in self.checked_trees:
+                self.genre_treeview_add(self.electronic_tree, consts.ELECTRONIC, 11, 5)
+                self.checked_trees.add(consts.ELECTRONIC)
+                self.genre_family_add(consts.ELECTRONIC)
         else:
-            if c.ELECTRONIC in self.added_trees:
+            if consts.ELECTRONIC in self.checked_trees:
                 self.genre_treeview_remove(self.electronic_tree)
-                self.added_trees.remove(c.ELECTRONIC)
-                self.genre_family_remove(c.ELECTRONIC)
+                self.checked_trees.remove(consts.ELECTRONIC)
+                self.genre_family_remove(consts.ELECTRONIC)
         
         # Experimental
         if self.experimental_checked.get():
-            if c.EXPERIMENTAL not in self.added_trees:
-                self.genre_treeview_add(self.experimental_tree, c.EXPERIMENTAL, 10, 6)
-                self.added_trees.add(c.EXPERIMENTAL)
-                self.genre_family_add(c.EXPERIMENTAL)
+            if consts.EXPERIMENTAL not in self.checked_trees:
+                self.genre_treeview_add(self.experimental_tree, consts.EXPERIMENTAL, 11, 6)
+                self.checked_trees.add(consts.EXPERIMENTAL)
+                self.genre_family_add(consts.EXPERIMENTAL)
         else:
-            if c.EXPERIMENTAL in self.added_trees:
+            if consts.EXPERIMENTAL in self.checked_trees:
                 self.genre_treeview_remove(self.experimental_tree)
-                self.added_trees.remove(c.EXPERIMENTAL)
-                self.genre_family_remove(c.EXPERIMENTAL)
+                self.checked_trees.remove(consts.EXPERIMENTAL)
+                self.genre_family_remove(consts.EXPERIMENTAL)
 
         # Folk
         if self.folk_checked.get():
-            if c.FOLK not in self.added_trees:
-                self.genre_treeview_add(self.folk_tree, c.FOLK, 11, 2)
-                self.added_trees.add(c.FOLK)
-                self.genre_family_add(c.FOLK)
+            if consts.FOLK not in self.checked_trees:
+                self.genre_treeview_add(self.folk_tree, consts.FOLK, 12, 2)
+                self.checked_trees.add(consts.FOLK)
+                self.genre_family_add(consts.FOLK)
         else:
-            if c.FOLK in self.added_trees:
+            if consts.FOLK in self.checked_trees:
                 self.genre_treeview_remove(self.folk_tree)
-                self.added_trees.remove(c.FOLK)
-                self.genre_family_remove(c.FOLK)
+                self.checked_trees.remove(consts.FOLK)
+                self.genre_family_remove(consts.FOLK)
         
         # Hip-Hop
         if self.hip_hop_checked.get():
-            if c.HIP_HOP not in self.added_trees:
-                self.genre_treeview_add(self.hip_hop_tree, c.HIP_HOP, 11, 3)
-                self.added_trees.add(c.HIP_HOP)
-                self.genre_family_add(c.HIP_HOP)
+            if consts.HIP_HOP not in self.checked_trees:
+                self.genre_treeview_add(self.hip_hop_tree, consts.HIP_HOP, 12, 3)
+                self.checked_trees.add(consts.HIP_HOP)
+                self.genre_family_add(consts.HIP_HOP)
         else:
-            if c.HIP_HOP in self.added_trees:
+            if consts.HIP_HOP in self.checked_trees:
                 self.genre_treeview_remove(self.hip_hop_tree)
-                self.added_trees.remove(c.HIP_HOP)
-                self.genre_family_remove(c.HIP_HOP)
+                self.checked_trees.remove(consts.HIP_HOP)
+                self.genre_family_remove(consts.HIP_HOP)
         
         # Industrial
         if self.industrial_checked.get():
-            if c.INDUSTRIAL not in self.added_trees:
-                self.genre_treeview_add(self.industrial_tree, c.INDUSTRIAL, 11, 4)
-                self.added_trees.add(c.INDUSTRIAL)
-                self.genre_family_add(c.INDUSTRIAL)
+            if consts.INDUSTRIAL not in self.checked_trees:
+                self.genre_treeview_add(self.industrial_tree, consts.INDUSTRIAL, 12, 4)
+                self.checked_trees.add(consts.INDUSTRIAL)
+                self.genre_family_add(consts.INDUSTRIAL)
         else:
-            if c.INDUSTRIAL in self.added_trees:
+            if consts.INDUSTRIAL in self.checked_trees:
                 self.genre_treeview_remove(self.industrial_tree)
-                self.added_trees.remove(c.INDUSTRIAL)
-                self.genre_family_remove(c.INDUSTRIAL)
+                self.checked_trees.remove(consts.INDUSTRIAL)
+                self.genre_family_remove(consts.INDUSTRIAL)
         
         # Jazz
         if self.jazz_checked.get():
-            if c.JAZZ not in self.added_trees:
-                self.genre_treeview_add(self.jazz_tree, c.JAZZ, 11, 5)
-                self.added_trees.add(c.JAZZ)
-                self.genre_family_add(c.JAZZ)
+            if consts.JAZZ not in self.checked_trees:
+                self.genre_treeview_add(self.jazz_tree, consts.JAZZ, 12, 5)
+                self.checked_trees.add(consts.JAZZ)
+                self.genre_family_add(consts.JAZZ)
         else:
-            if c.JAZZ in self.added_trees:
+            if consts.JAZZ in self.checked_trees:
                 self.genre_treeview_remove(self.jazz_tree)
-                self.added_trees.remove(c.JAZZ)
-                self.genre_family_remove(c.JAZZ)
+                self.checked_trees.remove(consts.JAZZ)
+                self.genre_family_remove(consts.JAZZ)
 
         # Metal
         if self.metal_checked.get():
-            if c.METAL not in self.added_trees:
-                self.genre_treeview_add(self.metal_tree, c.METAL, 11, 6)
-                self.added_trees.add(c.METAL)
-                self.genre_family_add(c.METAL)
+            if consts.METAL not in self.checked_trees:
+                self.genre_treeview_add(self.metal_tree, consts.METAL, 12, 6)
+                self.checked_trees.add(consts.METAL)
+                self.genre_family_add(consts.METAL)
         else:
-            if c.METAL in self.added_trees:
+            if consts.METAL in self.checked_trees:
                 self.genre_treeview_remove(self.metal_tree)
-                self.added_trees.remove(c.METAL)
-                self.genre_family_remove(c.METAL)
+                self.checked_trees.remove(consts.METAL)
+                self.genre_family_remove(consts.METAL)
         
         # Pop
         if self.pop_checked.get():
-            if c.POP not in self.added_trees:
-                self.genre_treeview_add(self.pop_tree, c.POP, 12, 2)
-                self.added_trees.add(c.POP)
-                self.genre_family_add(c.POP)
+            if consts.POP not in self.checked_trees:
+                self.genre_treeview_add(self.pop_tree, consts.POP, 13, 2)
+                self.checked_trees.add(consts.POP)
+                self.genre_family_add(consts.POP)
         else:
-            if c.POP in self.added_trees:
+            if consts.POP in self.checked_trees:
                 self.genre_treeview_remove(self.pop_tree)
-                self.added_trees.remove(c.POP)
-                self.genre_family_remove(c.POP)
+                self.checked_trees.remove(consts.POP)
+                self.genre_family_remove(consts.POP)
 
         # Punk
         if self.punk_checked.get():
-            if c.PUNK not in self.added_trees:
-                self.genre_treeview_add(self.punk_tree, c.PUNK, 12, 3)
-                self.added_trees.add(c.PUNK)
-                self.genre_family_add(c.PUNK)
+            if consts.PUNK not in self.checked_trees:
+                self.genre_treeview_add(self.punk_tree, consts.PUNK, 13, 3)
+                self.checked_trees.add(consts.PUNK)
+                self.genre_family_add(consts.PUNK)
         else:
-            if c.PUNK in self.added_trees:
+            if consts.PUNK in self.checked_trees:
                 self.genre_treeview_remove(self.punk_tree)
-                self.added_trees.remove(c.PUNK)
-                self.genre_family_remove(c.PUNK)
+                self.checked_trees.remove(consts.PUNK)
+                self.genre_family_remove(consts.PUNK)
         
         # R&B
         if self.r_and_b_checked.get():
-            if c.R_AND_B not in self.added_trees:
-                self.genre_treeview_add(self.r_and_b_tree, c.R_AND_B, 12, 4)
-                self.added_trees.add(c.R_AND_B)
-                self.genre_family_add(c.R_AND_B)
+            if consts.R_AND_B not in self.checked_trees:
+                self.genre_treeview_add(self.r_and_b_tree, consts.R_AND_B, 13, 4)
+                self.checked_trees.add(consts.R_AND_B)
+                self.genre_family_add(consts.R_AND_B)
         else:
-            if c.R_AND_B in self.added_trees:
+            if consts.R_AND_B in self.checked_trees:
                 self.genre_treeview_remove(self.r_and_b_tree)
-                self.added_trees.remove(c.R_AND_B)
-                self.genre_family_remove(c.R_AND_B)
+                self.checked_trees.remove(consts.R_AND_B)
+                self.genre_family_remove(consts.R_AND_B)
         
         # Reggae
         if self.reggae_checked.get():
-            if c.REGGAE not in self.added_trees:
-                self.genre_treeview_add(self.reggae_tree, c.REGGAE, 12, 5)
-                self.added_trees.add(c.REGGAE)
-                self.genre_family_add(c.REGGAE)
+            if consts.REGGAE not in self.checked_trees:
+                self.genre_treeview_add(self.reggae_tree, consts.REGGAE, 13, 5)
+                self.checked_trees.add(consts.REGGAE)
+                self.genre_family_add(consts.REGGAE)
         else:
-            if c.REGGAE in self.added_trees:
+            if consts.REGGAE in self.checked_trees:
                 self.genre_treeview_remove(self.reggae_tree)
-                self.added_trees.remove(c.REGGAE)
-                self.genre_family_remove(c.REGGAE)
+                self.checked_trees.remove(consts.REGGAE)
+                self.genre_family_remove(consts.REGGAE)
         
         # Regional
         if self.regional_checked.get():
-            if c.REGIONAL not in self.added_trees:
-                self.genre_treeview_add(self.regional_tree, c.REGIONAL, 12, 6)
-                self.added_trees.add(c.REGIONAL)
-                self.genre_family_add(c.REGIONAL)
+            if consts.REGIONAL not in self.checked_trees:
+                self.genre_treeview_add(self.regional_tree, consts.REGIONAL, 13, 6)
+                self.checked_trees.add(consts.REGIONAL)
+                self.genre_family_add(consts.REGIONAL)
         else:
-            if c.REGIONAL in self.added_trees:
+            if consts.REGIONAL in self.checked_trees:
                 self.genre_treeview_remove(self.regional_tree)
-                self.added_trees.remove(c.REGIONAL)
-                self.genre_family_remove(c.REGIONAL)
+                self.checked_trees.remove(consts.REGIONAL)
+                self.genre_family_remove(consts.REGIONAL)
 
         # Rock
         if self.rock_checked.get():
-            if c.ROCK not in self.added_trees:
-                self.genre_treeview_add(self.rock_tree, c.ROCK, 13, 3)
-                self.added_trees.add(c.ROCK)
-                self.genre_family_add(c.ROCK)
+            if consts.ROCK not in self.checked_trees:
+                self.genre_treeview_add(self.rock_tree, consts.ROCK, 14, 3)
+                self.checked_trees.add(consts.ROCK)
+                self.genre_family_add(consts.ROCK)
         else:
-            if c.ROCK in self.added_trees:
+            if consts.ROCK in self.checked_trees:
                 self.genre_treeview_remove(self.rock_tree)
-                self.added_trees.remove(c.ROCK)
-                self.genre_family_remove(c.ROCK)
+                self.checked_trees.remove(consts.ROCK)
+                self.genre_family_remove(consts.ROCK)
         
         # Soul
         if self.soul_checked.get():
-            if c.SOUL not in self.added_trees:
-                self.genre_treeview_add(self.soul_tree, c.SOUL, 13, 5)
-                self.added_trees.add(c.SOUL)
-                self.genre_family_add(c.SOUL)
+            if consts.SOUL not in self.checked_trees:
+                self.genre_treeview_add(self.soul_tree, consts.SOUL, 14, 5)
+                self.checked_trees.add(consts.SOUL)
+                self.genre_family_add(consts.SOUL)
         else:
-            if c.SOUL in self.added_trees:
+            if consts.SOUL in self.checked_trees:
                 self.genre_treeview_remove(self.soul_tree)
-                self.added_trees.remove(c.SOUL)
-                self.genre_family_remove(c.SOUL)
+                self.checked_trees.remove(consts.SOUL)
+                self.genre_family_remove(consts.SOUL)
 
     def genre_treeview_add(self, tree, genre, row_num, col_num):
         """
@@ -1442,103 +1442,103 @@ class CreateSheet(tkinter.Frame):
 
         # Album
         if self.album_checked.get():
-            if c.ALBUM not in self.added_formats:
-                self.format_add(c.ALBUM)
-                self.added_formats.add(c.ALBUM)
+            if consts.ALBUM not in self.checked_formats:
+                self.format_add(consts.ALBUM)
+                self.checked_formats.add(consts.ALBUM)
         else:
-            if c.ALBUM in self.added_formats:
-                self.format_remove(c.ALBUM)
-                self.added_formats.remove(c.ALBUM)
+            if consts.ALBUM in self.checked_formats:
+                self.format_remove(consts.ALBUM)
+                self.checked_formats.remove(consts.ALBUM)
             
         # EP
         if self.ep_checked.get():
-            if c.EP not in self.added_formats:
-                self.format_add(c.EP)
-                self.added_formats.add(c.EP)
+            if consts.EP not in self.checked_formats:
+                self.format_add(consts.EP)
+                self.checked_formats.add(consts.EP)
         else:
-            if c.EP in self.added_formats:
-                self.format_remove(c.EP)
-                self.added_formats.remove(c.EP)
+            if consts.EP in self.checked_formats:
+                self.format_remove(consts.EP)
+                self.checked_formats.remove(consts.EP)
 
         # Split
         if self.split_checked.get():
-            if c.SPLIT not in self.added_formats:
-                self.format_add(c.SPLIT)
-                self.added_formats.add(c.SPLIT)
+            if consts.SPLIT not in self.checked_formats:
+                self.format_add(consts.SPLIT)
+                self.checked_formats.add(consts.SPLIT)
         else:
-            if c.SPLIT in self.added_formats:
-                self.format_remove(c.SPLIT)
-                self.added_formats.remove(c.SPLIT)
+            if consts.SPLIT in self.checked_formats:
+                self.format_remove(consts.SPLIT)
+                self.checked_formats.remove(consts.SPLIT)
 
         # Mixtape
         if self.mixtape_checked.get():
-            if c.MIXTAPE not in self.added_formats:
-                self.format_add(c.MIXTAPE)
-                self.added_formats.add(c.MIXTAPE)
+            if consts.MIXTAPE not in self.checked_formats:
+                self.format_add(consts.MIXTAPE)
+                self.checked_formats.add(consts.MIXTAPE)
         else:
-            if c.MIXTAPE in self.added_formats:
-                self.format_remove(c.MIXTAPE)
-                self.added_formats.remove(c.MIXTAPE)
+            if consts.MIXTAPE in self.checked_formats:
+                self.format_remove(consts.MIXTAPE)
+                self.checked_formats.remove(consts.MIXTAPE)
 
         # Compilation
         if self.compilation_checked.get():
-            if c.COMPILATION not in self.added_formats:
-                self.format_add(c.COMPILATION)
-                self.added_formats.add(c.COMPILATION)
+            if consts.COMPILATION not in self.checked_formats:
+                self.format_add(consts.COMPILATION)
+                self.checked_formats.add(consts.COMPILATION)
         else:
-            if c.COMPILATION in self.added_formats:
-                self.format_remove(c.COMPILATION)
-                self.added_formats.remove(c.COMPILATION)
+            if consts.COMPILATION in self.checked_formats:
+                self.format_remove(consts.COMPILATION)
+                self.checked_formats.remove(consts.COMPILATION)
         
         # Collab
         if self.collab_checked.get():
-            if c.COLLAB not in self.added_formats:
-                self.format_add(c.COLLAB)
-                self.added_formats.add(c.COLLAB)
+            if consts.COLLAB not in self.checked_formats:
+                self.format_add(consts.COLLAB)
+                self.checked_formats.add(consts.COLLAB)
         else:
-            if c.COLLAB in self.added_formats:
-                self.format_remove(c.COLLAB)
-                self.added_formats.remove(c.COLLAB)
+            if consts.COLLAB in self.checked_formats:
+                self.format_remove(consts.COLLAB)
+                self.checked_formats.remove(consts.COLLAB)
         
         # Live
         if self.live_checked.get():
-            if c.LIVE not in self.added_formats:
-                self.format_add(c.LIVE)
-                self.added_formats.add(c.LIVE)
+            if consts.LIVE not in self.checked_formats:
+                self.format_add(consts.LIVE)
+                self.checked_formats.add(consts.LIVE)
         else:
-            if c.LIVE in self.added_formats:
-                self.format_remove(c.LIVE)
-                self.added_formats.remove(c.LIVE)
+            if consts.LIVE in self.checked_formats:
+                self.format_remove(consts.LIVE)
+                self.checked_formats.remove(consts.LIVE)
         
         # Archival
         if self.archival_checked.get():
-            if c.ARCHIVAL not in self.added_formats:
-                self.format_add(c.ARCHIVAL)
-                self.added_formats.add(c.ARCHIVAL)
+            if consts.ARCHIVAL not in self.checked_formats:
+                self.format_add(consts.ARCHIVAL)
+                self.checked_formats.add(consts.ARCHIVAL)
         else:
-            if c.ARCHIVAL in self.added_formats:
-                self.format_remove(c.ARCHIVAL)
-                self.added_formats.remove(c.ARCHIVAL)
+            if consts.ARCHIVAL in self.checked_formats:
+                self.format_remove(consts.ARCHIVAL)
+                self.checked_formats.remove(consts.ARCHIVAL)
         
         # Demo
         if self.demo_checked.get():
-            if c.DEMO not in self.added_formats:
-                self.format_add(c.DEMO)
-                self.added_formats.add(c.DEMO)
+            if consts.DEMO not in self.checked_formats:
+                self.format_add(consts.DEMO)
+                self.checked_formats.add(consts.DEMO)
         else:
-            if c.DEMO in self.added_formats:
-                self.format_remove(c.DEMO)
-                self.added_formats.remove(c.DEMO)
+            if consts.DEMO in self.checked_formats:
+                self.format_remove(consts.DEMO)
+                self.checked_formats.remove(consts.DEMO)
 
         # Additional Release
         if self.additional_release_checked.get():
-            if c.ADDITIONAL_RELEASE not in self.added_formats:
-                self.format_add(c.ADDITIONAL_RELEASE)
-                self.added_formats.add(c.ADDITIONAL_RELEASE)
+            if consts.ADDITIONAL_RELEASE not in self.checked_formats:
+                self.format_add(consts.ADDITIONAL_RELEASE)
+                self.checked_formats.add(consts.ADDITIONAL_RELEASE)
         else:
-            if c.ADDITIONAL_RELEASE in self.added_formats:
-                self.format_remove(c.ADDITIONAL_RELEASE)
-                self.added_formats.remove(c.ADDITIONAL_RELEASE)
+            if consts.ADDITIONAL_RELEASE in self.checked_formats:
+                self.format_remove(consts.ADDITIONAL_RELEASE)
+                self.checked_formats.remove(consts.ADDITIONAL_RELEASE)
 
     def format_add(self, format):
         """
