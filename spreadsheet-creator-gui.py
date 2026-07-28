@@ -997,7 +997,7 @@ class CreateSheet(tkinter.Frame):
         """
 
         # Tests if genre is not in genre_families
-        if self.genre_families.count(genre) == 0:
+        if self.genre_families.count(genre) == 0 or genre not in self.genre_families:
             self.genre_families.append(genre)
 
     def genre_family_remove(self, genre):
@@ -1013,7 +1013,7 @@ class CreateSheet(tkinter.Frame):
         """
 
         # Tests if genre exists in genre_families
-        if self.genre_families.count(genre) > 0:
+        if self.genre_families.count(genre) > 0 and genre in self.genre_families:
             self.genre_families.remove(genre)
 
     def on_select_subgenre(self, event):
